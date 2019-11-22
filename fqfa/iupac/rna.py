@@ -4,7 +4,7 @@
 
 from typing import List
 
-RNA_BASES: List[str]= [
+RNA_BASES: List[str] = [
     "A",  # Adenine
     "C",  # Cytosine
     "G",  # Guanine
