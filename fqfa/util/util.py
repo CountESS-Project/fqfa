@@ -33,7 +33,7 @@ def reverse_complement(seq: str) -> str:
         The reverse complement DNA sequence.
 
     """
-    rev_seq = seq.translate(_DNA_COMPLEMENTS_TRANS)
+    rev_seq = seq[::-1].translate(_DNA_COMPLEMENTS_TRANS)
     return rev_seq
 
 
