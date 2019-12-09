@@ -6,6 +6,14 @@ from fqfa.iupac.dna import DNA_COMPLEMENTS
 
 
 _DNA_COMPLEMENTS_TRANS = str.maketrans(DNA_COMPLEMENTS)
+"""Mapping[int, str]: translation table for complementing DNA bases, including IUPAC ambiguity characters.
+
+"""
+
+_RNA_DNA_TRANS = str.maketrans("U", "T")
+"""Mapping[int, str]: translation table for converting U bases to T bases in RNA sequences.
+
+"""
 
 
 def reverse_complement(seq: str) -> str:
@@ -17,7 +25,7 @@ def reverse_complement(seq: str) -> str:
     Parameters
     ----------
     seq : str
-        String containing only DNA bases.
+        String containing DNA bases.
 
     Returns
     -------
