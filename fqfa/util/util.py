@@ -27,3 +27,22 @@ def reverse_complement(seq: str) -> str:
     """
     rev_seq = seq.translate(_DNA_COMPLEMENTS_TRANS)
     return rev_seq
+
+
+def convert_rna_to_dna(seq: str) -> str:
+    """
+    Convert an RNA sequence into a DNA sequence by changing "U" to "T".
+
+    Parameters
+    ----------
+    seq : str
+        String containing RNA bases.
+
+    Returns
+    -------
+    str
+        The equivalent DNA sequence.
+
+    """
+    dna_seq = seq.translate(_RNA_DNA_TRANS)
+    return dna_seq
