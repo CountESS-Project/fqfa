@@ -2,7 +2,7 @@
 
 """
 
-from fqfa.iupac.dna import DNA_COMPLEMENTS
+from fqfa.constants.iupac.dna import DNA_COMPLEMENTS
 
 
 _DNA_COMPLEMENTS_TRANS = str.maketrans(DNA_COMPLEMENTS)
