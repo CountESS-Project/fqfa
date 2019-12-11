@@ -6,6 +6,7 @@ from typing import Dict
 
 CODON_TABLE: Dict[str, str] = {
     "AAA": "K",
+    # TODO
 }
 """Dict[str, str]: Map from codons to single-letter amino acid codes. Sorted by codon.
 
@@ -14,5 +15,6 @@ CODON_TABLE: Dict[str, str] = {
    :widths: 5, 5, 10
 
     "AAA", "K", "Lysine"
-
+    # TODO
+    
 """
