@@ -17,7 +17,7 @@ class TestReverseComplement(unittest.TestCase):
         self.assertEqual("GT4321", reverse_complement("1234AC"))
 
 
-class TestConvertRnaToDNA(unittest.TestCase):
+class TestConvertRnaToDna(unittest.TestCase):
     def test_single_nt(self):
         self.assertEqual("T", convert_rna_to_dna("U"))
         self.assertEqual("A", convert_rna_to_dna("A"))
