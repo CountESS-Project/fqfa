@@ -1,6 +1,6 @@
 import unittest
 
-from fqfa.util.util import reverse_complement, convert_rna_to_dna
+from fqfa.util.util import reverse_complement, convert_rna_to_dna, translate_dna
 
 
 class TestReverseComplement(unittest.TestCase):
@@ -26,3 +26,12 @@ class TestConvertRnaToDna(unittest.TestCase):
         self.assertEqual("ACGT", convert_rna_to_dna("ACGU"))
         self.assertEqual("AATT", convert_rna_to_dna("AAUU"))
         self.assertEqual("GGAA", convert_rna_to_dna("GGAA"))
+
+
+class TestTranslateDna(unittest.TestCase):
+    def test_single_codon(self):
+        self.assertTupleEqual(("K", None), translate_dna("AAA"))
+
+    def test_partial_codon(self):
+        self.assertTupleEqual(("", "AA"), translate_dna("AA"))
+        self.assertTupleEqual(("K", "AA"), translate_dna("AAAAA"))
