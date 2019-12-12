@@ -10,13 +10,19 @@ Welcome to fqfa's documentation!
    :maxdepth: 2
    :caption: Contents:
 
-.. automodule:: fqfa.iupac.dna
+.. automodule:: fqfa.constants.iupac.dna
    :members:
 
-.. automodule:: fqfa.iupac.rna
+.. automodule:: fqfa.constants.iupac.rna
    :members:
 
-.. automodule:: fqfa.iupac.protein
+.. automodule:: fqfa.constants.iupac.protein
+   :members:
+
+.. automodule:: fqfa.constants.translation.table
+   :members:
+
+.. automodule:: fqfa.util.util
    :members:
 
 Indices and tables
