@@ -11,6 +11,7 @@ Welcome to fqfa's documentation!
    :caption: Contents:
 
    constants
+   util
 
 
 Indices and tables
