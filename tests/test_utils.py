@@ -31,7 +31,18 @@ class TestConvertRnaToDna(unittest.TestCase):
 class TestTranslateDna(unittest.TestCase):
     def test_single_codon(self):
         self.assertTupleEqual(("K", None), translate_dna("AAA"))
+        self.assertTupleEqual(("*", None), translate_dna("TGA"))
+
+    def test_multi_codon(self):
+        # Note: this is the codon-optimized WW domain sequence from Fowler et al. 2010
+        self.assertTupleEqual(
+            ("DVPLPAGWEMAKTSSGQRYFLNHIDQTTTWQDPR", None),
+            translate_dna(
+                "GACGTTCCACTGCCGGCTGGTTGGGAAATGGCTAAAACTAGTTCTGGTCAGCGTTACTTCCTGAACCACATCGACCAGACCACCACGTGGCAGGACCCGCGT"
+            ),
+        )
 
     def test_partial_codon(self):
         self.assertTupleEqual(("", "AA"), translate_dna("AA"))
         self.assertTupleEqual(("K", "AA"), translate_dna("AAAAA"))
+        self.assertTupleEqual(("DVPLPA", "G"), translate_dna("GACGTTCCACTGCCGGCTG"))
