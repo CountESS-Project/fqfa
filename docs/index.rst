@@ -4,20 +4,14 @@
    contain the root `toctree` directive.
 
 Welcome to fqfa's documentation!
-================================
+************************************************
 
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
 
-.. automodule:: fqfa.iupac.dna
-   :members:
+   constants
 
-.. automodule:: fqfa.iupac.rna
-   :members:
-
-.. automodule:: fqfa.iupac.protein
-   :members:
 
 Indices and tables
 ==================
