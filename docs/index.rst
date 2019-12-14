@@ -10,6 +10,8 @@ Welcome to fqfa's documentation!
    :maxdepth: 2
    :caption: Contents:
 
+   fasta
+   fastq
    constants
    util
 
