@@ -46,3 +46,7 @@ class TestTranslateDna(unittest.TestCase):
         self.assertTupleEqual(("", "AA"), translate_dna("AA"))
         self.assertTupleEqual(("K", "AA"), translate_dna("AAAAA"))
         self.assertTupleEqual(("DVPLPA", "G"), translate_dna("GACGTTCCACTGCCGGCTG"))
+
+
+if __name__ == "__main__":
+    unittest.main()
