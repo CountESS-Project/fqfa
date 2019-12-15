@@ -19,6 +19,11 @@ _RNA_DNA_TRANS = str.maketrans("U", "T")
 
 """
 
+_DNA_RNA_TRANS = str.maketrans("T", "U")
+"""Mapping[int, str]: translation table for converting T bases to U bases in DNA sequences.
+
+"""
+
 
 def reverse_complement(seq: str) -> str:
     """
@@ -58,6 +63,25 @@ def convert_rna_to_dna(seq: str) -> str:
     """
     dna_seq = seq.translate(_RNA_DNA_TRANS)
     return dna_seq
+
+
+def convert_dna_to_rna(seq: str) -> str:
+    """
+    Convert a DNA sequence into a RNA sequence by changing "T" to "U".
+
+    Parameters
+    ----------
+    seq : str
+        String containing DNA bases.
+
+    Returns
+    -------
+    str
+        The equivalent RNA sequence.
+
+    """
+    rna_seq = seq.translate(_DNA_RNA_TRANS)
+    return rna_seq
 
 
 def translate_dna(
