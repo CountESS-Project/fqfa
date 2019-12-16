@@ -21,7 +21,7 @@ class FastqRead:
     quality: List[int] = field(init=False)
     quality_string: InitVar[str]
     quality_encoding_value: int = 33
-    sequence_pattern: ClassVar[Callable] = re.compile(r"[ACGTN]+").fullmatch
+    sequence_validator: ClassVar[Callable] = re.compile(r"[ACGTN]+").fullmatch
 
     def __post_init__(self, quality_string: str) -> None:
         """
@@ -61,7 +61,7 @@ class FastqRead:
         if not self.header2.startswith("+"):
             raise ValueError("unexpected value for FASTQ header")
 
-        if not self.sequence_pattern(self.sequence):
+        if not self.sequence_validator(self.sequence):
             raise ValueError("unexpected characters in sequence")
 
         self.quality = [ord(c) - self.quality_encoding_value for c in quality_string]
