@@ -1,7 +1,5 @@
 import unittest
-
 from io import StringIO
-
 from fqfa.fasta.fasta import yield_fasta_records
 
 
