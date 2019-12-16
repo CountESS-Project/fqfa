@@ -147,10 +147,13 @@ class FastqRead:
         """
         if start < 1:
             raise ValueError("start must be at least 1")
-        if start <= end:
-            raise ValueError("invalid trimming parameters")
-        self.sequence = self.sequence[start:end]
-        self.quality = self.quality[start:end]
+        if start > len(self):
+            raise ValueError("start must be less than or equal to the read length")
+        if end is not None:
+            if end < start:
+                raise ValueError("invalid trimming parameters")
+        self.sequence = self.sequence[start - 1 : end]
+        self.quality = self.quality[start - 1 : end]
 
     def trim_length(self, length: int, start: int = 1) -> None:
         """

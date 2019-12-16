@@ -101,7 +101,52 @@ class TestFastqRead(unittest.TestCase):
         self.assertEqual(test_read.min_quality(), min(self.test_quality))
 
     def test_trim(self):
-        self.assertEqual(True, False)
+        # make sure default parameters don't trim
+        test_read = FastqRead(**self.test_kwargs)
+        test_read.trim()
+        self.assertEqual(test_read, FastqRead(**self.test_kwargs))
+
+        # trim the start
+        test_read = FastqRead(**self.test_kwargs)
+        test_read.trim(start=2)
+        self.assertEqual(len(test_read), len(FastqRead(**self.test_kwargs)) - 1)
+        self.assertEqual(len(test_read.sequence), len(test_read.quality))
+
+        test_read = FastqRead(**self.test_kwargs)
+        test_read.trim(start=len(test_read))
+        self.assertEqual(len(test_read), 1)
+        self.assertEqual(len(test_read.sequence), len(test_read.quality))
+
+        # trim the end
+        test_read = FastqRead(**self.test_kwargs)
+        test_read.trim(end=len(test_read))
+        self.assertEqual(test_read, FastqRead(**self.test_kwargs))
+
+        test_read = FastqRead(**self.test_kwargs)
+        test_read.trim(end=len(test_read) - 1)
+        self.assertEqual(len(test_read), len(FastqRead(**self.test_kwargs)) - 1)
+        self.assertEqual(len(test_read.sequence), len(test_read.quality))
+
+        test_read = FastqRead(**self.test_kwargs)
+        test_read.trim(end=1)
+        self.assertEqual(len(test_read), 1)
+        self.assertEqual(len(test_read.sequence), len(test_read.quality))
+
+        # trim both ends
+        # TODO
+        test_read = FastqRead(**self.test_kwargs)
+
+        # bad start parameters
+        self.assertRaises(ValueError, test_read.trim, start=-1)
+        self.assertRaises(ValueError, test_read.trim, start=0)
+        self.assertRaises(ValueError, test_read.trim, start=len(test_read) + 1)
+
+        # bad end parameters
+        self.assertRaises(ValueError, test_read.trim, end=-1)
+        self.assertRaises(ValueError, test_read.trim, end=0)
+
+        # bad parameter combinations
+        # TODO
 
     def test_trim_length(self):
         self.assertEqual(True, False)
