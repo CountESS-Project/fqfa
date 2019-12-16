@@ -1,11 +1,5 @@
 import unittest
-
-from fqfa.util.util import (
-    reverse_complement,
-    convert_rna_to_dna,
-    convert_dna_to_rna,
-    translate_dna,
-)
+from fqfa.util.util import reverse_complement, convert_rna_to_dna, convert_dna_to_rna
 
 
 class TestReverseComplement(unittest.TestCase):
@@ -42,26 +36,6 @@ class TestConvertDnaToRna(unittest.TestCase):
         self.assertEqual("ACGU", convert_dna_to_rna("ACGT"))
         self.assertEqual("AAUU", convert_dna_to_rna("AATT"))
         self.assertEqual("GGAA", convert_dna_to_rna("GGAA"))
-
-
-class TestTranslateDna(unittest.TestCase):
-    def test_single_codon(self):
-        self.assertTupleEqual(("K", None), translate_dna("AAA"))
-        self.assertTupleEqual(("*", None), translate_dna("TGA"))
-
-    def test_multi_codon(self):
-        # Note: this is the codon-optimized WW domain sequence from Fowler et al. 2010
-        self.assertTupleEqual(
-            ("DVPLPAGWEMAKTSSGQRYFLNHIDQTTTWQDPR", None),
-            translate_dna(
-                "GACGTTCCACTGCCGGCTGGTTGGGAAATGGCTAAAACTAGTTCTGGTCAGCGTTACTTCCTGAACCACATCGACCAGACCACCACGTGGCAGGACCCGCGT"
-            ),
-        )
-
-    def test_partial_codon(self):
-        self.assertTupleEqual(("", "AA"), translate_dna("AA"))
-        self.assertTupleEqual(("K", "AA"), translate_dna("AAAAA"))
-        self.assertTupleEqual(("DVPLPA", "G"), translate_dna("GACGTTCCACTGCCGGCTG"))
 
 
 if __name__ == "__main__":
