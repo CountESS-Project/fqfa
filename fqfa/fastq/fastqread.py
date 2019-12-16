@@ -23,7 +23,7 @@ class FastqRead:
     quality_encoding_value: int = 33
     sequence_pattern: ClassVar[Callable] = re.compile(r"[ACGTN]+").fullmatch
 
-    def __post_init__(self, quality_string: str):
+    def __post_init__(self, quality_string: str) -> None:
         """
         This function performs some basic checks on the input and converts the quality string into a list of integers.
 
@@ -121,7 +121,7 @@ class FastqRead:
         """
         return min(self.quality)
 
-    def trim(self, start: int = 1, end: Optional[int] = None):
+    def trim(self, start: int = 1, end: Optional[int] = None) -> None:
         """
         Trim the read such that it contains bases between ``start`` and ``end`` (inclusive).
         Bases are numbered starting at 1.
@@ -152,7 +152,7 @@ class FastqRead:
         self.sequence = self.sequence[start:end]
         self.quality = self.quality[start:end]
 
-    def trim_length(self, length: int, start: int = 1):
+    def trim_length(self, length: int, start: int = 1) -> None:
         """
         Trim the read to a specific length, beginning at ``start``.
         Bases are numbered starting at 1.
@@ -183,7 +183,7 @@ class FastqRead:
             raise ValueError("length must be at least 1")
         self.trim(start=start, end=start + length)
 
-    def reverse_complement(self):
+    def reverse_complement(self) -> None:
         """
         Reverse-complements the sequence and reverse the order of quality values.
 
