@@ -1,5 +1,6 @@
 import unittest
 from fqfa.util.translate import translate_dna, ncbi_genetic_code_to_dict
+from fqfa.constants.translation.table import CODON_TABLE
 
 
 class TestTranslateDna(unittest.TestCase):
@@ -29,9 +30,15 @@ class TestTranslateDna(unittest.TestCase):
 
 
 class TestNcbiGeneticCodeToDict(unittest.TestCase):
-    @unittest.expectedFailure
-    def test_something(self):
-        self.assertEqual(True, False)
+    def test_parsing_default_table(self):
+        transl_table = """
+          AAs  = FFLLSSSSYY**CC*WLLLLPPPPHHQQRRRRIIIMTTTTNNKKSSRRVVVVAAAADDEEGGGG
+          Starts = ---M------**--*----M---------------M----------------------------
+          Base1  = TTTTTTTTTTTTTTTTCCCCCCCCCCCCCCCCAAAAAAAAAAAAAAAAGGGGGGGGGGGGGGGG
+          Base2  = TTTTCCCCAAAAGGGGTTTTCCCCAAAAGGGGTTTTCCCCAAAAGGGGTTTTCCCCAAAAGGGG
+          Base3  = TCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAGTCAG
+        """
+        self.assertDictEqual(ncbi_genetic_code_to_dict(transl_table), CODON_TABLE)
 
 
 if __name__ == "__main__":

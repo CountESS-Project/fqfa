@@ -87,7 +87,20 @@ def ncbi_genetic_code_to_dict(ncbi_string: str) -> Dict[str, str]:
 
     Raises
     ------
-    TODO
+    ValueError
+        If any of the rows is missing.
+    ValueError
+        If the row labels do not match the expected format.
+    ValueError
+        If any row does not have the expected format (``<label> = <data>``).
+    ValueError
+        If any of the rows fails to contain the expected number of characters (64).
+    ValueError
+        If there are duplicate codons in the table.
+    ValueError
+        If any of the BaseN rows contains a character other than ACGT.
+    ValueError
+        If the AAs row contains a character other than an amino acid.
 
     """
     lines = [
@@ -125,10 +138,5 @@ def ncbi_genetic_code_to_dict(ncbi_string: str) -> Dict[str, str]:
             codon_dict[codon] = aa
         else:
             raise ValueError("all transl_table codons must be unique")
-
-    if sorted(codon_dict.keys()) != sorted(
-        "".join(nts) for nts in itertools.product("ACGT", repeat=3)
-    ):
-        raise ValueError("incomplete set of codons from transl_table")
 
     return codon_dict
