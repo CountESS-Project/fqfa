@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.com/VariantEffect/fqfa.svg?branch=master)](https://travis-ci.com/VariantEffect/fqfa)
+[![Coverage Status](https://coveralls.io/repos/github/VariantEffect/fqfa/badge.svg?branch=master)](https://coveralls.io/github/VariantEffect/fqfa?branch=master)
 
 # fqfa
 
