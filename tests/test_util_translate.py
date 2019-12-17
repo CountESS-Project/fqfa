@@ -16,6 +16,12 @@ class TestTranslateDna(unittest.TestCase):
             ),
         )
 
+    def test_bad_codon(self):
+        self.assertRaises(KeyError, translate_dna, "atg")
+        self.assertRaises(KeyError, translate_dna, "NGA")
+        self.assertRaises(KeyError, translate_dna, "A.A")
+        self.assertRaises(KeyError, translate_dna, "CT ")
+
     def test_partial_codon(self):
         self.assertTupleEqual(("", "AA"), translate_dna("AA"))
         self.assertTupleEqual(("K", "AA"), translate_dna("AAAAA"))
