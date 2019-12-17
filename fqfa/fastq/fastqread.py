@@ -2,12 +2,12 @@
 
 """
 
-import re
 from dataclasses import dataclass, field, InitVar
 from typing import List, Optional, ClassVar, Callable
 from statistics import mean
 from fqfa.util.util import reverse_complement
-
+from fqfa.validator.validator import create_validator
+from fqfa.constants.iupac.dna import DNA_BASES
 
 @dataclass
 class FastqRead:
@@ -21,7 +21,7 @@ class FastqRead:
     quality: List[int] = field(init=False)
     quality_string: InitVar[str]
     quality_encoding_value: int = 33
-    sequence_validator: ClassVar[Callable] = re.compile(r"[ACGTN]+").fullmatch
+    sequence_validator: ClassVar[Callable] = create_validator(DNA_BASES + ["N"])
 
     def __post_init__(self, quality_string: str) -> None:
         """
