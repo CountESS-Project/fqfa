@@ -148,6 +148,7 @@ class TestFastqRead(unittest.TestCase):
         # bad parameter combinations
         # TODO
 
+    @unittest.expectedFailure
     def test_trim_length(self):
         self.assertEqual(True, False)
 
