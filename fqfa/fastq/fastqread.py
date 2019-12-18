@@ -9,6 +9,7 @@ from fqfa.util.util import reverse_complement
 from fqfa.validator.validator import create_validator
 from fqfa.constants.iupac.dna import DNA_BASES
 
+
 @dataclass
 class FastqRead:
     """
