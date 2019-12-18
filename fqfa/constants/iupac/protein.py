@@ -25,6 +25,7 @@ AA_CODES: Dict[str, str] = {
     "W": "Trp",  # Tryptophan
     "Y": "Tyr",  # Tyrosine
     "V": "Val",  # Valine
+    "*": "Ter",  # termination codon
 }
 """Dict[str, str]: Map from single-letter amino acid codes to three-letter codes. Sorted by three-letter code.
 
@@ -52,5 +53,6 @@ AA_CODES: Dict[str, str] = {
     "W", "Trp", "Tryptophan"
     "Y", "Tyr", "Tyrosine"
     "V", "Val", "Valine"
+    "\*", "Ter",  "termination codon"
 
 """
