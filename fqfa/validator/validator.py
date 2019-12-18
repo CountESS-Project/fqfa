@@ -1,5 +1,8 @@
 import re
 from typing import Union, List, Callable, Match, Optional
+from fqfa.constants.iupac.dna import DNA_BASES, DNA_CHARACTERS
+from fqfa.constants.iupac.rna import RNA_BASES
+from fqfa.constants.iupac.protein import AA_CODES
 
 
 def create_validator(
@@ -34,3 +37,9 @@ def create_validator(
 
     pattern_string = f"[{''.join(charset)}]+"
     return re.compile(pattern_string).fullmatch
+
+
+dna_bases_validator = create_validator(DNA_BASES)
+dna_characters_validator = create_validator(DNA_CHARACTERS)
+rna_bases_validator = create_validator(RNA_BASES)
+amino_acids_validator = create_validator(list(AA_CODES.keys()))
