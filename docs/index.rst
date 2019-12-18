@@ -12,8 +12,9 @@ Welcome to fqfa's documentation!
 
    fasta
    fastq
-   constants
+   validator
    util
+   constants
 
 Indices and tables
 ==================
