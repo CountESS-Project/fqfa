@@ -5,6 +5,7 @@
 import itertools
 from typing import Dict, Tuple, Optional
 from fqfa.constants.translation.table import CODON_TABLE
+from fqfa.validator.validator import dna_bases_validator, amino_acids_validator
 
 
 def translate_dna(
@@ -123,6 +124,18 @@ def ncbi_genetic_code_to_dict(ncbi_string: str) -> Dict[str, str]:
         raise ValueError("unmatched transl_table row labels")
     if [len(s) for s in transl_table.values()] != [64] * 5:
         raise ValueError("all transl_table rows must contain 64 characters")
+
+    if not all(
+        dna_bases_validator(bases)
+        for bases in (
+            transl_table["Base1"],
+            transl_table["Base2"],
+            transl_table["Base3"],
+        )
+    ):
+        raise ValueError("transl_table row contains non-DNA base characters")
+    if not amino_acids_validator(transl_table["AAs"]):
+        raise ValueError("transl_table row contains non-amino acid characters")
 
     codon_dict = dict()
     for aa, codon in zip(
