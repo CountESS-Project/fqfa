@@ -1,7 +1,7 @@
 import unittest
 
 
-class TestValidatorCreation(unittest.TestCase):
+class TestCreateValidator(unittest.TestCase):
     @unittest.expectedFailure
     def test_something(self):
         self.assertEqual(True, False)
