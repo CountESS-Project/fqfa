@@ -111,11 +111,13 @@ class TestFastqRead(unittest.TestCase):
         test_read.trim(start=2)
         self.assertEqual(len(test_read), len(FastqRead(**self.test_kwargs)) - 1)
         self.assertEqual(len(test_read.sequence), len(test_read.quality))
+        self.assertEqual(test_read.sequence, FastqRead(**self.test_kwargs).sequence[1:])
 
         test_read = FastqRead(**self.test_kwargs)
         test_read.trim(start=len(test_read))
         self.assertEqual(len(test_read), 1)
         self.assertEqual(len(test_read.sequence), len(test_read.quality))
+        self.assertEqual(test_read.sequence, FastqRead(**self.test_kwargs).sequence[-1])
 
         # trim the end
         test_read = FastqRead(**self.test_kwargs)
@@ -126,15 +128,20 @@ class TestFastqRead(unittest.TestCase):
         test_read.trim(end=len(test_read) - 1)
         self.assertEqual(len(test_read), len(FastqRead(**self.test_kwargs)) - 1)
         self.assertEqual(len(test_read.sequence), len(test_read.quality))
+        self.assertEqual(test_read.sequence, FastqRead(**self.test_kwargs).sequence[:-1])
 
         test_read = FastqRead(**self.test_kwargs)
         test_read.trim(end=1)
         self.assertEqual(len(test_read), 1)
         self.assertEqual(len(test_read.sequence), len(test_read.quality))
+        self.assertEqual(test_read.sequence, FastqRead(**self.test_kwargs).sequence[:1])
 
         # trim both ends
-        # TODO
         test_read = FastqRead(**self.test_kwargs)
+        test_read.trim(start=2, end=2)
+        self.assertEqual(len(test_read), 1)
+        self.assertEqual(len(test_read.sequence), len(test_read.quality))
+        # TODO
 
         # bad start parameters
         self.assertRaises(ValueError, test_read.trim, start=-1)
