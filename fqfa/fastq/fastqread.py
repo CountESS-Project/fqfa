@@ -3,7 +3,7 @@
 """
 
 from dataclasses import dataclass, field, InitVar
-from typing import List, Optional, ClassVar, Callable
+from typing import List, Optional, ClassVar, Callable, Match
 from statistics import mean
 from fqfa.util.util import reverse_complement
 from fqfa.validator.create import create_validator
@@ -22,7 +22,9 @@ class FastqRead:
     quality: List[int] = field(init=False)
     quality_string: InitVar[str]
     quality_encoding_value: int = 33
-    sequence_validator: ClassVar[Callable] = create_validator(DNA_BASES + ["N"])
+    sequence_validator: ClassVar[
+        Callable[[str, int, int], Optional[Match[str]]]
+    ] = create_validator(DNA_BASES + ["N"])
 
     def __post_init__(self, quality_string: str) -> None:
         """
