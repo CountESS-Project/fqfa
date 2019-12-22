@@ -66,7 +66,7 @@ def ncbi_genetic_code_to_dict(ncbi_string: str) -> Dict[str, str]:
     NCBI translation tables can be found
     `here <https://www.ncbi.nlm.nih.gov/Taxonomy/Utils/wprintgc.cgi?chapter=cgencodes>`_.
 
-    The default translation table is encoded by::
+    The standard genetic code is encoded by::
 
         AAs  = FFLLSSSSYY**CC*WLLLLPPPPHHQQRRRRIIIMTTTTNNKKSSRRVVVVAAAADDEEGGGG
       Starts = ---M------**--*----M---------------M----------------------------
