@@ -116,7 +116,7 @@ class TestFastqRead(unittest.TestCase):
         test_read.trim(start=len(test_read))
         self.assertEqual(len(test_read), 1)
         self.assertEqual(len(test_read.sequence), len(test_read.quality))
-        self.assertEqual(test_read.sequence, FastqRead(**self.test_kwargs).sequence[-1])
+        self.assertEqual(test_read.sequence, FastqRead(**self.test_kwargs).sequence[-1:])
 
     def test_trim_end(self):
         test_read = FastqRead(**self.test_kwargs)
@@ -142,13 +142,15 @@ class TestFastqRead(unittest.TestCase):
         test_read.trim(start=2, end=2)
         self.assertEqual(len(test_read), 1)
         self.assertEqual(len(test_read.sequence), len(test_read.quality))
-        self.assertEqual(test_read.sequence, FastqRead(**self.test_kwargs).sequence[1])
+        self.assertEqual(test_read.sequence, FastqRead(**self.test_kwargs).sequence[1:2])
 
         test_read = FastqRead(**self.test_kwargs)
         test_read.trim(start=2, end=4)
         self.assertEqual(len(test_read), 3)
         self.assertEqual(len(test_read.sequence), len(test_read.quality))
-        self.assertEqual(test_read.sequence, FastqRead(**self.test_kwargs).sequence[1:4])
+        self.assertEqual(
+            test_read.sequence, FastqRead(**self.test_kwargs).sequence[1:4]
+        )
 
     def test_trim_bad_parameters(self):
         test_read = FastqRead(**self.test_kwargs)
@@ -173,10 +175,66 @@ class TestFastqRead(unittest.TestCase):
         self.assertRaises(ValueError, test_read.trim, start=4, end=3)
         self.assertEqual(test_read, FastqRead(**self.test_kwargs))
 
-    @unittest.expectedFailure
     def test_trim_length(self):
+        test_read = FastqRead(**self.test_kwargs)
+        test_read.trim_length(length=len(test_read))
+        self.assertEqual(test_read, FastqRead(**self.test_kwargs))
 
-        self.assertEqual(True, False)
+        test_read = FastqRead(**self.test_kwargs)
+        test_read.trim_length(length=1)
+        self.assertEqual(len(test_read), 1)
+        self.assertEqual(len(test_read.sequence), len(test_read.quality))
+        self.assertEqual(test_read.sequence, FastqRead(**self.test_kwargs).sequence[:1])
+
+        test_read = FastqRead(**self.test_kwargs)
+        test_read.trim_length(length=2)
+        self.assertEqual(len(test_read), 2)
+        self.assertEqual(len(test_read.sequence), len(test_read.quality))
+        self.assertEqual(test_read.sequence, FastqRead(**self.test_kwargs).sequence[:2])
+
+        test_read = FastqRead(**self.test_kwargs)
+        test_read.trim_length(start=2, length=4)
+        self.assertEqual(len(test_read), 4)
+        self.assertEqual(len(test_read.sequence), len(test_read.quality))
+        self.assertEqual(
+            test_read.sequence, FastqRead(**self.test_kwargs).sequence[1:5]
+        )
+
+    def test_trim_length_bad_parameters(self):
+        test_read = FastqRead(**self.test_kwargs)
+
+        # bad start parameters
+        self.assertRaises(
+            ValueError, test_read.trim_length, start=-1, length=len(test_read)
+        )
+        self.assertEqual(test_read, FastqRead(**self.test_kwargs))
+        self.assertRaises(
+            ValueError, test_read.trim_length, start=0, length=len(test_read)
+        )
+        self.assertEqual(test_read, FastqRead(**self.test_kwargs))
+        self.assertRaises(
+            ValueError,
+            test_read.trim_length,
+            start=len(test_read) + 1,
+            length=len(test_read),
+        )
+        self.assertEqual(test_read, FastqRead(**self.test_kwargs))
+
+        # bad length parameters
+        self.assertRaises(ValueError, test_read.trim_length, length=-1)
+        self.assertEqual(test_read, FastqRead(**self.test_kwargs))
+        self.assertRaises(ValueError, test_read.trim_length, length=0)
+        self.assertEqual(test_read, FastqRead(**self.test_kwargs))
+        self.assertRaises(ValueError, test_read.trim_length, length=len(test_read) + 1)
+        self.assertEqual(test_read, FastqRead(**self.test_kwargs))
+
+        # bad parameter combinations
+        self.assertRaises(ValueError, test_read.trim_length, start=-1, length=0)
+        self.assertEqual(test_read, FastqRead(**self.test_kwargs))
+        self.assertRaises(
+            ValueError, test_read.trim_length, start=2, length=len(test_read)
+        )
+        self.assertEqual(test_read, FastqRead(**self.test_kwargs))
 
     def test_reverse_complement(self):
         test_read = FastqRead(**self.test_kwargs)

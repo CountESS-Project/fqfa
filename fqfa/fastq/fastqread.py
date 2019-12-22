@@ -202,13 +202,17 @@ class FastqRead:
             If the length is less than 1.
         ValueError
             If the start is less than 1.
+        ValueError
+            If the length is longer than the read.
 
         """
         if start < 1:
             raise ValueError("start must be at least 1")
         if length < 1:
             raise ValueError("length must be at least 1")
-        self.trim(start=start, end=start + length)
+        if length > len(self) or (length + start - 1) > len(self):
+            raise ValueError("trim length exceeds read length")
+        self.trim(start=start, end=(start + length - 1))
 
     def reverse_complement(self) -> None:
         """Reverse-complements the sequence and reverse the order of quality values.
