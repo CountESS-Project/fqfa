@@ -36,7 +36,7 @@ def has_fastq_ext(path: str) -> bool:
     """Checks whether the file has the expected file extension for FASTQ format.
 
     Recognized file extensions are ``.fq`` and ``.fastq`` optionally in combination with a compression file extension
-    supported by :py:func:`~fqfq.util.file.open_compressed`.
+    supported by :py:func:`~fqfa.util.file.open_compressed`.
 
     Parameters
     ----------
@@ -61,7 +61,7 @@ def has_fasta_ext(path: str) -> bool:
     """Checks whether the file has the expected file extension for FASTA format.
 
     Recognized file extensions are ``.fa`` and ``.fasta`` optionally in combination with a compression file extension
-    supported by :py:func:`~fqfq.util.file.open_compressed`.
+    supported by :py:func:`~fqfa.util.file.open_compressed`.
 
     Parameters
     ----------

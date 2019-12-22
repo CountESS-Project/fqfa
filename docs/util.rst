@@ -16,5 +16,5 @@ DNA sequence translation functions
 File handling functions
 =======================
 
-.. automodule:: fqfq.util.file
+.. automodule:: fqfa.util.file
    :members:
