@@ -22,6 +22,11 @@ def create_validator(
     Callable[[str, int, int], Optional[Match[str]]]
         Callable validator that uses re.fullmatch.
 
+    Raises
+    ------
+    ValueError
+        If valid_characters is a list containing multiple characters per entry.
+
     """
     if isinstance(valid_characters, list):
         if not all(len(c) == 1 for c in valid_characters):
