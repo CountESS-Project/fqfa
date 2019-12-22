@@ -1,7 +1,7 @@
 import unittest
 from statistics import mean
 from fqfa.fastq.fastqread import FastqRead
-from fqfa.util.util import reverse_complement
+from fqfa.util.sequence import reverse_complement
 
 
 class TestFastqRead(unittest.TestCase):

@@ -1,5 +1,9 @@
 import unittest
-from fqfa.util.util import reverse_complement, convert_rna_to_dna, convert_dna_to_rna
+from fqfa.util.sequence import (
+    reverse_complement,
+    convert_rna_to_dna,
+    convert_dna_to_rna,
+)
 
 
 class TestReverseComplement(unittest.TestCase):

@@ -5,7 +5,7 @@
 from dataclasses import dataclass, field, InitVar
 from typing import List, Optional, ClassVar, Callable, Match
 from statistics import mean
-from fqfa.util.util import reverse_complement
+from fqfa.util.sequence import reverse_complement
 from fqfa.validator.create import create_validator
 from fqfa.constants.iupac.dna import DNA_BASES
 

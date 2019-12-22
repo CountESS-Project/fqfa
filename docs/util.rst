@@ -1,10 +1,10 @@
 Utility functions
 ********************
 
-General utility functions
-=========================
+Sequence utility functions
+==========================
 
-.. automodule:: fqfa.util.util
+.. automodule:: fqfa.util.sequence
    :members:
 
 DNA sequence translation functions
