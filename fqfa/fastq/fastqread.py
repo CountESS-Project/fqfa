@@ -48,7 +48,7 @@ class FastqRead:
     quality: List[int] = field(init=False)
     quality_string: InitVar[str]
     quality_encoding_value: int = 33
-    sequence_validator: ClassVar[
+    _sequence_validator: ClassVar[
         Callable[[str, int, int], Optional[Match[str]]]
     ] = create_validator(DNA_BASES + ["N"])
 
@@ -90,7 +90,7 @@ class FastqRead:
         if not self.header2.startswith("+"):
             raise ValueError("unexpected value for FASTQ header")
 
-        if not self.sequence_validator(self.sequence):
+        if not self._sequence_validator(self.sequence):
             raise ValueError("unexpected characters in sequence")
 
         self.quality = [ord(c) - self.quality_encoding_value for c in quality_string]
