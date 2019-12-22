@@ -2,7 +2,6 @@
 
 """
 
-import itertools
 from typing import Dict, Tuple, Optional
 from fqfa.constants.translation.table import CODON_TABLE
 from fqfa.validator.validator import dna_bases_validator, amino_acids_validator
