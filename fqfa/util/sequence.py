@@ -21,8 +21,7 @@ _DNA_RNA_TRANS = str.maketrans("T", "U")
 
 
 def reverse_complement(seq: str) -> str:
-    """
-    Reverse-complement a DNA sequence string and return it.
+    """Reverse-complement a DNA sequence string and return it.
 
     If a character not in fqfa.iupac.dna.DNA_CHARACTERS is encountered, it is retained.
 
@@ -42,8 +41,7 @@ def reverse_complement(seq: str) -> str:
 
 
 def convert_rna_to_dna(seq: str) -> str:
-    """
-    Convert an RNA sequence into a DNA sequence by changing "U" to "T".
+    """Convert an RNA sequence into a DNA sequence by changing "U" to "T".
 
     Parameters
     ----------
@@ -61,8 +59,7 @@ def convert_rna_to_dna(seq: str) -> str:
 
 
 def convert_dna_to_rna(seq: str) -> str:
-    """
-    Convert a DNA sequence into a RNA sequence by changing "T" to "U".
+    """Convert a DNA sequence into a RNA sequence by changing "T" to "U".
 
     Parameters
     ----------

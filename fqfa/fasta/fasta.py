@@ -6,8 +6,7 @@ from typing import TextIO, Generator, Tuple
 
 
 def yield_fasta_records(handle: TextIO) -> Generator[Tuple[str, str], None, None]:
-    """
-    Generator function that returns tuples of FASTA headers and their associated sequences.
+    """Generator function that returns tuples of FASTA headers and their associated sequences.
 
     Lines before the start of the first record are ignored.
     Any leading and trailing whitespace is removed before the sequence lines are concatenated together.

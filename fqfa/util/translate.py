@@ -56,9 +56,12 @@ def translate_dna(
 
 
 def ncbi_genetic_code_to_dict(ncbi_string: str) -> Dict[str, str]:
-    """
-    Parse a translation table from NCBI in the five-line table format into a dictionary representation suitable for
-    :py:func:`fqfa.util.util.translate_dna`.
+    """Parse a translation table from NCBI into a dictionary.
+
+    The five-line table input is parsed into a dictionary representation suitable for
+    :py:func:~`fqfa.util.util.translate_dna`.
+    As an example, the standard genetic code (transl_table=1) is defined in
+    :py:data:~`fqfa.constants.translation.table.CODON_TABLE`.
 
     NCBI translation tables can be found
     `here <https://www.ncbi.nlm.nih.gov/Taxonomy/Utils/wprintgc.cgi?chapter=cgencodes>`_.

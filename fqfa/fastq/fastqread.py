@@ -53,11 +53,10 @@ class FastqRead:
     ] = create_validator(DNA_BASES + ["N"])
 
     def __post_init__(self, quality_string: str) -> None:
-        """
-        This function performs some basic checks on the input and converts the quality string into a list of integers.
+        """Perform some basic checks on the input and converts the quality string into a list of integers.
 
-        The quality string is converted to integers using the ``quality_encoding_value``, which defaults to Sanger-style
-        quality values.
+        The quality string is converted to integers using the ``quality_encoding_value``.
+        This defaults to Sanger-style quality values (minimum value of 33).
 
         Parameters
         ----------
@@ -100,8 +99,7 @@ class FastqRead:
             raise ValueError("sequence quality value above 93")
 
     def __len__(self) -> int:
-        """
-        The object's length is defined as the length of the sequence.
+        """The object's length is defined as the length of the sequence.
 
         Returns
         -------
@@ -112,8 +110,7 @@ class FastqRead:
         return len(self.sequence)
 
     def __str__(self) -> str:
-        """
-        Formats the object as a four-line FASTQ record.
+        """Formats the object as a four-line FASTQ record.
 
         Returns
         -------
@@ -127,8 +124,7 @@ class FastqRead:
         return "\n".join((self.header, self.sequence, self.header2, quality_string))
 
     def average_quality(self) -> float:
-        """
-        Calculates and returns the read's mean quality value.
+        """Calculates and returns the read's mean quality value.
 
         Returns
         -------
@@ -139,8 +135,7 @@ class FastqRead:
         return mean(self.quality)
 
     def min_quality(self) -> int:
-        """
-        Calculates and returns the read's minimum quality value.
+        """Calculates and returns the read's minimum quality value.
 
         Returns
         -------
@@ -151,8 +146,8 @@ class FastqRead:
         return min(self.quality)
 
     def trim(self, start: int = 1, end: Optional[int] = None) -> None:
-        """
-        Trim the read such that it contains bases between ``start`` and ``end`` (inclusive).
+        """Trim the read such that it contains bases between ``start`` and ``end`` (inclusive).
+
         Bases are numbered starting at 1.
 
         Parameters
@@ -185,8 +180,8 @@ class FastqRead:
         self.quality = self.quality[start - 1 : end]
 
     def trim_length(self, length: int, start: int = 1) -> None:
-        """
-        Trim the read to a specific length, beginning at ``start``.
+        """Trim the read to a specific length, beginning at ``start``.
+
         Bases are numbered starting at 1.
 
         Parameters
@@ -216,8 +211,7 @@ class FastqRead:
         self.trim(start=start, end=start + length)
 
     def reverse_complement(self) -> None:
-        """
-        Reverse-complements the sequence and reverse the order of quality values.
+        """Reverse-complements the sequence and reverse the order of quality values.
 
         Returns
         -------
