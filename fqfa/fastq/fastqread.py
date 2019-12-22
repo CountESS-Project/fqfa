@@ -12,8 +12,34 @@ from fqfa.constants.iupac.dna import DNA_BASES
 
 @dataclass
 class FastqRead:
-    """
-    TODO
+    """Dataclass representing a single read from a FASTQ file.
+
+    Parameters
+    ----------
+    header : str
+        The first header line in the FASTQ read, beginning with '@'.
+    sequence : str
+        The nucleotide sequence of the FASTQ read, consisting of only bases "ACGTN".
+    header2 : str
+        The second header line in the FASTQ read, beginning with '+'.
+    quality_string : str
+        The base quality values, ASCII encoded.
+    quality_encoding_value : int
+        The ASCII value of base quality 0. Default is 33.
+
+    Attributes
+    ----------
+    header : str
+        The first header line in the FASTQ read, beginning with '@'.
+    sequence : str
+        The nucleotide sequence of the FASTQ read, consisting of only bases "ACGTN".
+    header2 : str
+        The second header line in the FASTQ read, beginning with '+'.
+    quality : List[int]
+        The base quality values as a list of integers.
+    quality_encoding_value : int
+        The ASCII value of base quality 0.
+
     """
 
     header: str
