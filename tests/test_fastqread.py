@@ -142,25 +142,40 @@ class TestFastqRead(unittest.TestCase):
         test_read.trim(start=2, end=2)
         self.assertEqual(len(test_read), 1)
         self.assertEqual(len(test_read.sequence), len(test_read.quality))
-        # TODO
+        self.assertEqual(test_read.sequence, FastqRead(**self.test_kwargs).sequence[1])
+
+        test_read = FastqRead(**self.test_kwargs)
+        test_read.trim(start=2, end=4)
+        self.assertEqual(len(test_read), 3)
+        self.assertEqual(len(test_read.sequence), len(test_read.quality))
+        self.assertEqual(test_read.sequence, FastqRead(**self.test_kwargs).sequence[1:4])
 
     def test_trim_bad_parameters(self):
         test_read = FastqRead(**self.test_kwargs)
 
         # bad start parameters
         self.assertRaises(ValueError, test_read.trim, start=-1)
+        self.assertEqual(test_read, FastqRead(**self.test_kwargs))
         self.assertRaises(ValueError, test_read.trim, start=0)
+        self.assertEqual(test_read, FastqRead(**self.test_kwargs))
         self.assertRaises(ValueError, test_read.trim, start=len(test_read) + 1)
+        self.assertEqual(test_read, FastqRead(**self.test_kwargs))
 
         # bad end parameters
         self.assertRaises(ValueError, test_read.trim, end=-1)
+        self.assertEqual(test_read, FastqRead(**self.test_kwargs))
         self.assertRaises(ValueError, test_read.trim, end=0)
+        self.assertEqual(test_read, FastqRead(**self.test_kwargs))
 
         # bad parameter combinations
-        # TODO
+        self.assertRaises(ValueError, test_read.trim, start=-1, end=0)
+        self.assertEqual(test_read, FastqRead(**self.test_kwargs))
+        self.assertRaises(ValueError, test_read.trim, start=4, end=3)
+        self.assertEqual(test_read, FastqRead(**self.test_kwargs))
 
     @unittest.expectedFailure
     def test_trim_length(self):
+
         self.assertEqual(True, False)
 
     def test_reverse_complement(self):
