@@ -4,7 +4,7 @@ from fqfa.fasta.fasta import yield_fasta_records
 
 
 class TestYieldFastaRecords(unittest.TestCase):
-    def test_empty(self):
+    def test_empty(self) -> None:
         data = StringIO("")
 
         iterator = yield_fasta_records(data)
@@ -12,7 +12,7 @@ class TestYieldFastaRecords(unittest.TestCase):
         # should return an empty generator
         self.assertRaises(StopIteration, next, iterator)
 
-    def test_noheader(self):
+    def test_noheader(self) -> None:
         data = StringIO("ACGT\n")
 
         iterator = yield_fasta_records(data)
@@ -20,7 +20,7 @@ class TestYieldFastaRecords(unittest.TestCase):
         # should return an empty generator
         self.assertRaises(StopIteration, next, iterator)
 
-    def test_single(self):
+    def test_single(self) -> None:
         data = StringIO(">seq1\nACGT\n")
 
         iterator = yield_fasta_records(data)
@@ -28,7 +28,7 @@ class TestYieldFastaRecords(unittest.TestCase):
         self.assertTupleEqual(next(iterator), ("seq1", "ACGT"))
         self.assertRaises(StopIteration, next, iterator)
 
-    def test_multiple(self):
+    def test_multiple(self) -> None:
         data = StringIO(">seq1\nACGT\n>seq2\nTGCA\n\n>seq3\nTTTT")
 
         iterator = yield_fasta_records(data)
@@ -38,7 +38,7 @@ class TestYieldFastaRecords(unittest.TestCase):
         self.assertTupleEqual(next(iterator), ("seq3", "TTTT"))
         self.assertRaises(StopIteration, next, iterator)
 
-    def test_multiline(self):
+    def test_multiline(self) -> None:
         data = StringIO(">seq1\nACGT\nTGCA")
 
         iterator = yield_fasta_records(data)
