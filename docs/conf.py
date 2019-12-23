@@ -34,6 +34,7 @@ release = "0.0.1"
 extensions = [
     "sphinx.ext.autodoc",
     "sphinx.ext.napoleon",
+    "sphinx.ext.intersphinx",
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -44,6 +45,8 @@ templates_path = ["_templates"]
 # This pattern also affects html_static_path and html_extra_path.
 exclude_patterns = ["_build", "Thumbs.db", ".DS_Store"]
 
+# Intersphinx information for documentation from other packages
+intersphinx_mapping = {"python": ("https://docs.python.org/3", None)}
 
 # -- Options for HTML output -------------------------------------------------
 
