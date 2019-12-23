@@ -1,12 +1,39 @@
 import unittest
+import unittest.mock as mock
 
 from fqfa.util.file import open_compressed, has_fastq_ext, has_fasta_ext
 
 
 class TestOpenCompressed(unittest.TestCase):
-    @unittest.expectedFailure
-    def test_something(self) -> None:
-        self.assertEqual(True, False)
+    @mock.patch("fqfa.util.file.gzip.open")
+    @mock.patch("fqfa.util.file.os.path.isfile")
+    def test_open_gzip(self, mock_isfile, mock_gzip_open) -> None:
+        mock_isfile.return_value = False
+        self.assertRaises(FileNotFoundError, open_compressed, "file.fq.gz")
+
+        mock_isfile.return_value = True
+        mock_gzip_open.return_value = "opened gz"
+        self.assertEqual("opened gz", open_compressed("file.fq.gz"))
+
+    @mock.patch("fqfa.util.file.bz2.open")
+    @mock.patch("fqfa.util.file.os.path.isfile")
+    def test_open_bzip2(self, mock_isfile, mock_bz2_open) -> None:
+        mock_isfile.return_value = False
+        self.assertRaises(FileNotFoundError, open_compressed, "file.fq.bz2")
+
+        mock_isfile.return_value = True
+        mock_bz2_open.return_value = "opened bz2"
+        self.assertEqual("opened bz2", open_compressed("file.fq.bz2"))
+
+    @mock.patch("fqfa.util.file.open")
+    @mock.patch("fqfa.util.file.os.path.isfile")
+    def test_open_uncompressed(self, mock_isfile, mock_default_open) -> None:
+        mock_isfile.return_value = False
+        self.assertRaises(FileNotFoundError, open_compressed, "file.fq")
+
+        mock_isfile.return_value = True
+        mock_default_open.return_value = "opened uncompressed"
+        self.assertEqual("opened uncompressed", open_compressed("file.fq"))
 
 
 class TestHasFastqExt(unittest.TestCase):

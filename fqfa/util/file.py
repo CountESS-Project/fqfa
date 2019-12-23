@@ -45,11 +45,12 @@ def open_compressed(path: str, encoding: Optional[str] = None) -> IO[Any]:
         raise FileNotFoundError("could not find file to open")
     _, ext = os.path.splitext(path)
     if ext.lower() in _COMPRESSION_EXTENSIONS:
-        if ext.lower == ".bz2":
+        if ext.lower() == ".bz2":
             return bz2.open(path, mode="rt", encoding=encoding)
-        elif ext.lower == ".gz":
+        elif ext.lower() == ".gz":
             return gzip.open(path, mode="rt", encoding=encoding)
         else:  # pragma no cover
+            print("EXT IS", ext, "XXXXX")
             raise NotImplementedError("unsupported compression type")
     else:
         return open(path, mode="rt", encoding=encoding)
