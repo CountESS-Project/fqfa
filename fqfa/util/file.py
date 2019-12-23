@@ -50,7 +50,6 @@ def open_compressed(path: str, encoding: Optional[str] = None) -> IO[Any]:
         elif ext.lower() == ".gz":
             return gzip.open(path, mode="rt", encoding=encoding)
         else:  # pragma no cover
-            print("EXT IS", ext, "XXXXX")
             raise NotImplementedError("unsupported compression type")
     else:
         return open(path, mode="rt", encoding=encoding)
