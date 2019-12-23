@@ -1,18 +1,19 @@
-language: python
-python:
-  - "3.6"
-  - "3.7"
-  - "3.8"
-  - "3.8-dev"
-  - "pypy3"
+matrix:
+  include:
+    - python: "3.6"
+    - python: "3.7"
+    - python: "3.8"
+    - python: "3.8-dev"
+    - python: "pypy3"
+      env: NO_MYPY=true
 install:
   - pip3 install .
 before_script:
   - pip3 install coverage
   - pip3 install coveralls
-  - pip3 install mypy
+  - if ! $NO_MYPY; then pip3 install mypy; fi
 script:
   - coverage run --source fqfa -m unittest
-  - mypy fqfa tests
+  - if ! $NO_MYPY; then mypy fqfa tests; fi
 after_success:
   - coveralls
