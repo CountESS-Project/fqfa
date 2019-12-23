@@ -10,7 +10,9 @@ install:
 before_script:
   - pip3 install coverage
   - pip3 install coveralls
+  - pip3 install mypy
 script:
   - coverage run --source fqfa -m unittest
+  - mypy fqfa tests
 after_success:
   - coveralls
