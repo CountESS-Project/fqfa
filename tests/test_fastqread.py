@@ -116,7 +116,9 @@ class TestFastqRead(unittest.TestCase):
         test_read.trim(start=len(test_read))
         self.assertEqual(len(test_read), 1)
         self.assertEqual(len(test_read.sequence), len(test_read.quality))
-        self.assertEqual(test_read.sequence, FastqRead(**self.test_kwargs).sequence[-1:])
+        self.assertEqual(
+            test_read.sequence, FastqRead(**self.test_kwargs).sequence[-1:]
+        )
 
     def test_trim_end(self) -> None:
         test_read = FastqRead(**self.test_kwargs)
@@ -142,7 +144,9 @@ class TestFastqRead(unittest.TestCase):
         test_read.trim(start=2, end=2)
         self.assertEqual(len(test_read), 1)
         self.assertEqual(len(test_read.sequence), len(test_read.quality))
-        self.assertEqual(test_read.sequence, FastqRead(**self.test_kwargs).sequence[1:2])
+        self.assertEqual(
+            test_read.sequence, FastqRead(**self.test_kwargs).sequence[1:2]
+        )
 
         test_read = FastqRead(**self.test_kwargs)
         test_read.trim(start=2, end=4)
