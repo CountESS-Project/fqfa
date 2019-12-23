@@ -5,7 +5,7 @@
 import os
 import bz2
 import gzip
-from typing import Optional, TextIO
+from typing import Optional, IO, Any
 
 _COMPRESSION_EXTENSIONS = [".bz2", ".gz"]
 """List[str]: list of recognized compression extensions.
@@ -13,7 +13,7 @@ _COMPRESSION_EXTENSIONS = [".bz2", ".gz"]
 """
 
 
-def open_compressed(path: str, encoding: Optional[str] = None) -> TextIO:
+def open_compressed(path: str, encoding: Optional[str] = None) -> IO[Any]:
     """Open the file handle for reading using the correct (optional) decompression method.
 
     Compression status is determined by the file extension.
@@ -30,8 +30,8 @@ def open_compressed(path: str, encoding: Optional[str] = None) -> TextIO:
 
     Returns
     -------
-    TextIO
-        Open file handle.
+    IO[Any]
+        Open text file handle.
 
     Raises
     ------
