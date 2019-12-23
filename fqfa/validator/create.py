@@ -4,7 +4,7 @@ from typing import Union, List, Callable, Match, Optional
 
 def create_validator(
     valid_characters: Union[str, List[str]], case_sensitive: bool = True
-) -> Callable[[str, int, int], Optional[Match[str]]]:
+) -> Callable[[str], Optional[Match[str]]]:
     """Function that generates a callable, regular-expression based sequence validator.
 
     When called on a given string, the validator will return a Match object if every character is one of the

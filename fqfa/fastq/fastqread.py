@@ -49,7 +49,7 @@ class FastqRead:
     quality_string: InitVar[str]
     quality_encoding_value: int = 33
     _sequence_validator: ClassVar[
-        Callable[[str, int, int], Optional[Match[str]]]
+        Callable[[str], Optional[Match[str]]]
     ] = create_validator(DNA_BASES + ["N"])
 
     def __post_init__(self, quality_string: str) -> None:
