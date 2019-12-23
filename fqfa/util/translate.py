@@ -139,7 +139,7 @@ def ncbi_genetic_code_to_dict(ncbi_string: str) -> Dict[str, str]:
     if not amino_acids_validator(transl_table["AAs"]):
         raise ValueError("transl_table row contains non-amino acid characters")
 
-    codon_dict = dict()
+    codon_dict: Dict[str, str] = dict()
     for aa, codon in zip(
         transl_table["AAs"],
         (

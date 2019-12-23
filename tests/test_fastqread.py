@@ -1,4 +1,5 @@
 import unittest
+from typing import Dict, Any
 from statistics import mean
 from fqfa.fastq.fastqread import FastqRead
 from fqfa.util.sequence import reverse_complement
@@ -6,7 +7,7 @@ from fqfa.util.sequence import reverse_complement
 
 class TestFastqRead(unittest.TestCase):
     def setUp(self) -> None:
-        self.test_kwargs = {
+        self.test_kwargs: Dict[str, Any] = {
             "header": "@TEST:123:456 AAA",
             "sequence": "AAGNCT",
             "header2": "+",
