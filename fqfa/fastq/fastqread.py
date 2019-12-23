@@ -89,7 +89,8 @@ class FastqRead:
         if not self.header2.startswith("+"):
             raise ValueError("unexpected value for FASTQ header")
 
-        if not self._sequence_validator(self.sequence):
+        if not self._sequence_validator(self.sequence):  # type: ignore
+            # mypy false positive: https://github.com/python/mypy/issues/5485
             raise ValueError("unexpected characters in sequence")
 
         self.quality = [ord(c) - self.quality_encoding_value for c in quality_string]
