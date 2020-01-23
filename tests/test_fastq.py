@@ -25,7 +25,7 @@ class TestYieldFastqReads(unittest.TestCase):
         self.assertListEqual(read.quality, [0, 93, 32, 33, 34, 35])
 
     def test_truncated(self) -> None:
-        data = StringIO("@TEST:123:456 AAA\nAAGNCT\n+\n!~AB")
+        data = StringIO("@TEST:123:456 AAA\nAAGN")
 
         iterator = yield_fastq_reads(data)
 
