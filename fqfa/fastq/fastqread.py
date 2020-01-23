@@ -1,4 +1,4 @@
-"""Defintion for the FastqRead dataclass describing a single FASTQ record.
+"""Definition for the FastqRead dataclass describing a single FASTQ record.
 
 """
 
