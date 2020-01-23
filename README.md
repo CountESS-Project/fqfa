@@ -1,5 +1,4 @@
-[![Build Status](https://travis-ci.com/VariantEffect/fqfa.svg?branch=master)](https://travis-ci.com/VariantEffect/fqfa)
-[![Coverage Status](https://coveralls.io/repos/github/VariantEffect/fqfa/badge.svg?branch=master)](https://coveralls.io/github/VariantEffect/fqfa?branch=master)
+[![Build Status](https://travis-ci.com/CountESS-Project/fqfa.svg?branch=master)](https://travis-ci.com/CountESS-Project/fqfa)[![Coverage Status](https://coveralls.io/repos/github/CountESS-Project/fqfa/badge.svg?branch=master)](https://coveralls.io/github/CountESS-Project/fqfa?branch=master)
 
 # fqfa
 
