@@ -2,7 +2,7 @@
 
 """
 
-from typing import TextIO, Generator
+from typing import TextIO, Generator, Tuple
 from fqfa.fastq.fastqread import FastqRead
 
 
