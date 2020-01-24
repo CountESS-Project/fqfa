@@ -1,6 +1,7 @@
 import unittest
 from io import StringIO
-from fqfa.fastq.fastq import yield_fastq_reads
+from fqfa.fastq.fastqread import FastqRead
+from fqfa.fastq.fastq import yield_fastq_reads, yield_fastq_reads_pe
 
 
 class TestYieldFastqReads(unittest.TestCase):
@@ -13,21 +14,102 @@ class TestYieldFastqReads(unittest.TestCase):
         self.assertRaises(StopIteration, next, iterator)
 
     def test_single(self) -> None:
-        data = StringIO("@TEST:123:456 AAA\nAAGNCT\n+\n!~ABCD\n")
+        test_read = FastqRead(
+            header="@TEST:123:456 AAA",
+            sequence="AAGNCT",
+            header2="+",
+            quality_string="!~ABCD",
+        )
+        data = StringIO(str(test_read))
 
         iterator = yield_fastq_reads(data)
 
-        read = next(iterator)
-
-        self.assertEqual(read.header, "@TEST:123:456 AAA")
-        self.assertEqual(read.sequence, "AAGNCT")
-        self.assertEqual(read.header2, "+")
-        self.assertListEqual(read.quality, [0, 93, 32, 33, 34, 35])
+        self.assertEqual(next(iterator), test_read)
 
     def test_truncated(self) -> None:
         data = StringIO("@TEST:123:456 AAA\nAAGN")
 
         iterator = yield_fastq_reads(data)
+
+        self.assertRaises(ValueError, next, iterator)
+
+
+class TestYieldFastqReadsPe(unittest.TestCase):
+    def test_empty(self) -> None:
+        fwd_data = StringIO("")
+        rev_data = StringIO("")
+
+        iterator = yield_fastq_reads_pe(fwd_data, rev_data)
+
+        # should return an empty generator
+        self.assertRaises(StopIteration, next, iterator)
+
+    def test_one_empty(self) -> None:
+        test_fwd_read = FastqRead(
+            header="@TEST:123:456 AAA",
+            sequence="AAGNCT",
+            header2="+",
+            quality_string="!~ABCD",
+        )
+        fwd_data = StringIO(str(test_fwd_read))
+        rev_data = StringIO("")
+
+        iterator = yield_fastq_reads_pe(fwd_data, rev_data)
+
+        self.assertRaises(ValueError, next, iterator)
+
+    def test_single_pair(self) -> None:
+        test_fwd_read = FastqRead(
+            header="@TEST:123:456 AAA",
+            sequence="AAGNCT",
+            header2="+",
+            quality_string="!~ABCD",
+        )
+        fwd_data = StringIO(str(test_fwd_read))
+        test_rev_read = FastqRead(
+            header="@TEST:123:456 BBB",
+            sequence="ACGTAA",
+            header2="+",
+            quality_string="AAA!CD",
+        )
+        rev_data = StringIO(str(test_rev_read))
+
+        iterator = yield_fastq_reads_pe(fwd_data, rev_data)
+
+        self.assertTupleEqual(next(iterator), (test_fwd_read, test_rev_read))
+
+    def test_single_pair_rc(self) -> None:
+        test_fwd_read = FastqRead(
+            header="@TEST:123:456 AAA",
+            sequence="AAGNCT",
+            header2="+",
+            quality_string="!~ABCD",
+        )
+        fwd_data = StringIO(str(test_fwd_read))
+        test_rev_read = FastqRead(
+            header="@TEST:123:456 BBB",
+            sequence="ACGTAA",
+            header2="+",
+            quality_string="AAA!CD",
+        )
+        rev_data = StringIO(str(test_rev_read))
+
+        iterator = yield_fastq_reads_pe(fwd_data, rev_data, revcomp=True)
+
+        test_rev_read.reverse_complement()  # take reverse complement for comparison after creating the test data
+        self.assertTupleEqual(next(iterator), (test_fwd_read, test_rev_read))
+
+    def test_truncated(self) -> None:
+        fwd_data = StringIO("@TEST:123:456 AAA\nAAGN")
+        test_rev_read = FastqRead(
+            header="@TEST:123:456 BBB",
+            sequence="ACGTAA",
+            header2="+",
+            quality_string="AAA!CD",
+        )
+        rev_data = StringIO(str(test_rev_read))
+
+        iterator = yield_fastq_reads_pe(fwd_data, rev_data)
 
         self.assertRaises(ValueError, next, iterator)
 

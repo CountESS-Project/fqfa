@@ -3,6 +3,7 @@
 """
 
 from typing import TextIO, Generator, Tuple
+from itertools import zip_longest
 from fqfa.fastq.fastqread import FastqRead
 
 
@@ -63,8 +64,21 @@ def yield_fastq_reads_pe(
     ValueError
         If a record is incomplete.
     ValueError
+        If the two file handles have a different number of reads.
+    ValueError
         If the read header portion before the first whitespace doesn't match between read pairs.
         This usually contains the machine ID and read coordinates, and is therefore expected to match for PE data.
 
     """
-    pass
+    fwd_generator = yield_fastq_reads(handle_fwd)
+    rev_generator = yield_fastq_reads(handle_rev)
+
+    for fwd, rev in zip_longest(fwd_generator, rev_generator, fillvalue=None):
+        if None in (fwd, rev):
+            raise ValueError("mismatched FASTQ file lengths")
+        elif fwd.header.split()[0] != rev.header.split()[0]:
+            raise ValueError("forward and reverse read headers do not match")
+        else:
+            if revcomp:
+                rev.reverse_complement()
+            yield fwd, rev
