@@ -113,6 +113,26 @@ class TestYieldFastqReadsPe(unittest.TestCase):
 
         self.assertRaises(ValueError, next, iterator)
 
+    def test_header_mismatch(self) -> None:
+        test_fwd_read = FastqRead(
+            header="@TEST:123:456 AAA",
+            sequence="AAGNCT",
+            header2="+",
+            quality_string="!~ABCD",
+        )
+        fwd_data = StringIO(str(test_fwd_read))
+        test_rev_read = FastqRead(
+            header="@TEST:123:789 BBB",
+            sequence="ACGTAA",
+            header2="+",
+            quality_string="AAA!CD",
+        )
+        rev_data = StringIO(str(test_rev_read))
+
+        iterator = yield_fastq_reads_pe(fwd_data, rev_data)
+
+        self.assertRaises(ValueError, next, iterator)
+
 
 if __name__ == "__main__":
     unittest.main()
