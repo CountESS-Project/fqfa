@@ -14,6 +14,8 @@ from fqfa.constants.iupac.dna import DNA_BASES
 class FastqRead:
     """Dataclass representing a single read from a FASTQ file.
 
+    Most methods modify the read in-place rather than returning a modified copy.
+
     Parameters
     ----------
     header : str
