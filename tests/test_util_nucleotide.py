@@ -1,5 +1,5 @@
 import unittest
-from fqfa.util.sequence import (
+from fqfa.util.nucleotide import (
     reverse_complement,
     convert_rna_to_dna,
     convert_dna_to_rna,

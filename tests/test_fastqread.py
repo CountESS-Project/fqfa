@@ -2,7 +2,7 @@ import unittest
 from typing import Dict, Any
 from statistics import mean
 from fqfa.fastq.fastqread import FastqRead
-from fqfa.util.sequence import reverse_complement
+from fqfa.util.nucleotide import reverse_complement
 
 
 class TestFastqRead(unittest.TestCase):
