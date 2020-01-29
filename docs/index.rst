@@ -10,11 +10,9 @@ Welcome to fqfa's documentation!
    :maxdepth: 2
    :caption: Contents:
 
-   fasta
-   fastq
+   files
    validator
    util
-   constants
 
 Indices and tables
 ==================
