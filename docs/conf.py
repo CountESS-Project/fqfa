@@ -49,6 +49,14 @@ exclude_patterns = ["_build", "Thumbs.db", ".DS_Store"]
 # Intersphinx information for documentation from other packages
 intersphinx_mapping = {"python": ("https://docs.python.org/3", None)}
 
+# Epilogue containing commonly-used web links
+rst_epilog = """
+.. _FASTQ: https://www.ncbi.nlm.nih.gov/sra/docs/submitformats/#fastq-files
+
+.. _FASTA: https://www.ncbi.nlm.nih.gov/BLAST/fasta.shtml
+
+"""
+
 # -- Options for HTML output -------------------------------------------------
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for

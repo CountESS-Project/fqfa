@@ -1,14 +1,14 @@
 File handling
 *************
 
-fqfa implements several functions to help open FASTA and FASTQ data files.
+fqfa implements several functions to help open FASTA_ and FASTQ_ data files.
 This includes functions for validating file names as well as for opening compressed file handles.
 Currently fqfa supports opening files compressed with bzip2 or gzip.
 Generally speaking, gzip is faster and more widely-supported by other bioinformatics software,
-but bzip2 offers slightly better compression that may be relevant for large FASTQ files that are not frequently
+but bzip2 offers slightly better compression that may be relevant for large FASTQ_ files that are not frequently
 accessed.
 
-The generator functions for FASTA and FASTQ files take open file handles as their arguments,
+The generator functions for FASTA_ and FASTQ_ files take open file handles as their arguments,
 supporting the use of :py:func:`~fqfa.util.file.open_compressed`.
 
 .. automodule:: fqfa.util.file
@@ -17,12 +17,12 @@ supporting the use of :py:func:`~fqfa.util.file.open_compressed`.
 Working with FASTA files
 ========================
 
-fqfa has basic support for FASTA files.
-This is designed for small FASTA files such as those containing gene or plasmid sequences.
-fqfa does not use or create FASTA index (``.fai``) files.
+fqfa has basic support for FASTA_ files.
+This is designed for small FASTA_ files such as those containing gene or plasmid sequences.
+fqfa does not use or create FASTA_ index (``.fai``) files.
 
-The generator function below that parses FASTA files is slightly more flexible than the FASTA specification.
-Specifically, it ignores any lines before the first FASTA record, allowing for comments or other metadata at the
+The generator function below that parses FASTA_ files is slightly more flexible than the FASTA specification.
+Specifically, it ignores any lines before the first FASTA_ record, allowing for comments or other metadata at the
 start of the file, and allows any amount of leading or trailing whitespace in the sequence
 (including blank lines within a record).
 
