@@ -7,7 +7,7 @@ from itertools import zip_longest
 from fqfa.fastq.fastqread import FastqRead
 
 
-def yield_fastq_reads(handle: TextIO) -> Generator[FastqRead, None, None]:
+def parse_fastq_reads(handle: TextIO) -> Generator[FastqRead, None, None]:
     """Generator function that returns FASTQ reads as objects.
 
     Parameters
@@ -38,7 +38,7 @@ def yield_fastq_reads(handle: TextIO) -> Generator[FastqRead, None, None]:
             yield FastqRead(*lines)
 
 
-def yield_fastq_reads_pe(
+def parse_fastq_pe_reads(
     handle_fwd: TextIO, handle_rev: TextIO, revcomp: bool = False
 ) -> Generator[Tuple[FastqRead, FastqRead], None, None]:
     """Generator function that returns FASTQ read pairs as a tuple of objects.
@@ -70,8 +70,8 @@ def yield_fastq_reads_pe(
         This usually contains the machine ID and read coordinates, and is therefore expected to match for PE data.
 
     """
-    fwd_generator = yield_fastq_reads(handle_fwd)
-    rev_generator = yield_fastq_reads(handle_rev)
+    fwd_generator = parse_fastq_reads(handle_fwd)
+    rev_generator = parse_fastq_reads(handle_rev)
 
     for fwd, rev in zip_longest(fwd_generator, rev_generator, fillvalue=None):
         if None in (fwd, rev):

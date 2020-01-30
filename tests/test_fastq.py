@@ -1,14 +1,14 @@
 import unittest
 from io import StringIO
 from fqfa.fastq.fastqread import FastqRead
-from fqfa.fastq.fastq import yield_fastq_reads, yield_fastq_reads_pe
+from fqfa.fastq.fastq import parse_fastq_reads, parse_fastq_pe_reads
 
 
 class TestYieldFastqReads(unittest.TestCase):
     def test_empty(self) -> None:
         data = StringIO("")
 
-        iterator = yield_fastq_reads(data)
+        iterator = parse_fastq_reads(data)
 
         # should return an empty generator
         self.assertRaises(StopIteration, next, iterator)
@@ -22,14 +22,14 @@ class TestYieldFastqReads(unittest.TestCase):
         )
         data = StringIO(str(test_read))
 
-        iterator = yield_fastq_reads(data)
+        iterator = parse_fastq_reads(data)
 
         self.assertEqual(next(iterator), test_read)
 
     def test_truncated(self) -> None:
         data = StringIO("@TEST:123:456 AAA\nAAGN")
 
-        iterator = yield_fastq_reads(data)
+        iterator = parse_fastq_reads(data)
 
         self.assertRaises(ValueError, next, iterator)
 
@@ -39,7 +39,7 @@ class TestYieldFastqReadsPe(unittest.TestCase):
         fwd_data = StringIO("")
         rev_data = StringIO("")
 
-        iterator = yield_fastq_reads_pe(fwd_data, rev_data)
+        iterator = parse_fastq_pe_reads(fwd_data, rev_data)
 
         # should return an empty generator
         self.assertRaises(StopIteration, next, iterator)
@@ -54,7 +54,7 @@ class TestYieldFastqReadsPe(unittest.TestCase):
         fwd_data = StringIO(str(test_fwd_read))
         rev_data = StringIO("")
 
-        iterator = yield_fastq_reads_pe(fwd_data, rev_data)
+        iterator = parse_fastq_pe_reads(fwd_data, rev_data)
 
         self.assertRaises(ValueError, next, iterator)
 
@@ -74,7 +74,7 @@ class TestYieldFastqReadsPe(unittest.TestCase):
         )
         rev_data = StringIO(str(test_rev_read))
 
-        iterator = yield_fastq_reads_pe(fwd_data, rev_data)
+        iterator = parse_fastq_pe_reads(fwd_data, rev_data)
 
         self.assertTupleEqual(next(iterator), (test_fwd_read, test_rev_read))
 
@@ -94,7 +94,7 @@ class TestYieldFastqReadsPe(unittest.TestCase):
         )
         rev_data = StringIO(str(test_rev_read))
 
-        iterator = yield_fastq_reads_pe(fwd_data, rev_data, revcomp=True)
+        iterator = parse_fastq_pe_reads(fwd_data, rev_data, revcomp=True)
 
         test_rev_read.reverse_complement()  # take reverse complement for comparison after creating the test data
         self.assertTupleEqual(next(iterator), (test_fwd_read, test_rev_read))
@@ -109,7 +109,7 @@ class TestYieldFastqReadsPe(unittest.TestCase):
         )
         rev_data = StringIO(str(test_rev_read))
 
-        iterator = yield_fastq_reads_pe(fwd_data, rev_data)
+        iterator = parse_fastq_pe_reads(fwd_data, rev_data)
 
         self.assertRaises(ValueError, next, iterator)
 
@@ -129,7 +129,7 @@ class TestYieldFastqReadsPe(unittest.TestCase):
         )
         rev_data = StringIO(str(test_rev_read))
 
-        iterator = yield_fastq_reads_pe(fwd_data, rev_data)
+        iterator = parse_fastq_pe_reads(fwd_data, rev_data)
 
         self.assertRaises(ValueError, next, iterator)
 
