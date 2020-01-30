@@ -8,14 +8,14 @@ For efficiency, these functions assume that any required validation
 fqfa has a copy of the :ref:`standard translation table<translation table>` and alternative translation tables can be imported using
 :py:func:`~fqfa.util.translate.ncbi_genetic_code_to_dict`.
 
-Nucleotide utility functions
-============================
+Nucleotide sequence utility functions
+=====================================
 
 .. automodule:: fqfa.util.nucleotide
    :members:
 
-DNA sequence translation functions
-==================================
+Coding sequence translation
+===========================
 
 .. automodule:: fqfa.util.translate
    :members:
