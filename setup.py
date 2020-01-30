@@ -17,7 +17,7 @@ setuptools.setup(
     description="A lightweight Python library for handling FASTQ and FASTA files.",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/varianteffect/fqfa",
+    url="https://github.com/CountESS-Project/fqfa",
     packages=setuptools.find_packages(),
     classifiers=[
         "Development Status :: 3 - Alpha",
