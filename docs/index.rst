@@ -1,22 +1,21 @@
-.. fqfa documentation master file, created by
-   sphinx-quickstart on Tue Nov 19 11:19:13 2019.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
+fqfa
+****
 
-Welcome to fqfa's documentation!
-************************************************
+fqfa is a pure Python library for bioinformatics and computational biology.
+It implements parsers for FASTA_ and FASTQ_ files as well as some commonly-used sequence operations.
+
+Install fqfa from PyPI using pip::
+
+    pip3 install fqfa
+
+Building a local copy of the documentation requires the following additional packages::
+
+    pip3 install sphinx
+    pip3 install sphinx-rtd-theme
 
 .. toctree::
-   :maxdepth: 2
-   :caption: Contents:
+   :maxdepth: 3
 
    files
    validator
    util
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
