@@ -83,3 +83,4 @@ def clear_module_docstring(app, what, name, obj, options, lines):
 
 def setup(app):
     app.connect("autodoc-process-docstring", clear_module_docstring)
+    app.add_css_file("custom.css")
