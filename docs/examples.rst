@@ -133,3 +133,37 @@ output.
 Filtering paired-end FASTQ reads on sequence quality
 ====================================================
 
+.. testsetup:: fastq
+
+   from io import StringIO
+   from fqfa.fastq.fastq import parse_fastq_pe_reads
+
+fqfa can read single FASTQ_ files or a pair of FASTQ_ files in parallel.
+
+.. doctest:: fastq
+   :pyversion: >= 3.6
+
+   >>> fastq_fwd = """\
+   ... @TEST:123:456 AAA
+   ... ACGTAA
+   ... +
+   ... AAA!CD
+   ... @TEST:999:888 AAA
+   ... AAACCC
+   ... +
+   ... ABABAB
+   ... """
+   >>> fastq_rev = """\
+   ... @TEST:123:456 BBB
+   ... TTTTTT
+   ... +
+   ... ACACAC
+   ... @TEST:999:888 BBB
+   ... GGGCCC
+   ... +
+   ... BBBAAA
+   ... """
+   >>> for fwd, rev in parse_fastq_pe_reads(StringIO(fastq_fwd), StringIO(fastq_rev)):
+   ...     if fwd.min_quality() > 20 and rev.min_quality() > 20:
+   ...         print(f"{fwd.sequence}-{rev.sequence}")
+   AAACCC-GGGCCC
