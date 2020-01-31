@@ -6,7 +6,7 @@
 
 # fqfa
 
-A lightweight Python library for handling [FASTQ](https://www.ncbi.nlm.nih.gov/sra/docs/submitformats/#fastq-files) and 
+A pure Python library for handling [FASTQ](https://www.ncbi.nlm.nih.gov/sra/docs/submitformats/#fastq-files) and 
 [FASTA]( https://www.ncbi.nlm.nih.gov/BLAST/fasta.shtml) files.
 
 Install fqfa from PyPI using pip:
@@ -27,4 +27,4 @@ Contributions via pull request are welcome.
 Contributed code should have full unit test coverage, 
 [NumPy-style docstrings](https://numpydoc.readthedocs.io/en/latest/format.html#docstring-standard),
 [black formatting](https://github.com/psf/black),
-and [type hints](https://docs.python.org/3/library/typing.html).
+and [type hints](https://docs.python.org/3/library/typing.html)..
