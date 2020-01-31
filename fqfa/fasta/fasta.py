@@ -2,6 +2,8 @@
 
 """
 
+import textwrap
+import string
 from typing import TextIO, Generator, Tuple
 
 
@@ -38,3 +40,43 @@ def parse_fasta_records(handle: TextIO) -> Generator[Tuple[str, str], None, None
         yield header, "".join(seq_lines)
     else:  # no FASTA records in file
         return
+
+
+def write_fasta_record(handle: TextIO, header: str, seq: str, width: int = 60) -> None:
+    """Writes a FASTA record to an open file handle.
+
+    Leading and trailing whitespace will be removed from the header and all whitespace will be removed from the
+    sequence before generating output.
+
+    Parameters
+    ----------
+    handle : TextIO
+        Open text file handle to write to.
+    header : str
+        Header string for the FASTA record, without the leading '>'
+    seq : str
+        Sequence for the FASTA record.
+    width : int
+        Width to use when hard-wrapping the sequence. Default 60.
+
+    Returns
+    -------
+    None
+
+    Raises
+    ------
+    ValueError
+        If the header is empty.
+    ValueError
+        If the sequence is empty.
+
+    """
+    header = header.strip()
+    seq = seq.translate(str.maketrans("", "", string.whitespace))
+
+    if len(header) == 0:
+        raise ValueError("empty FASTA header")
+    if len(seq) == 0:
+        raise ValueError("empty FASTA sequence")
+
+    print(f">{header}\n{textwrap.fill(seq, width=width)}", file=handle)
