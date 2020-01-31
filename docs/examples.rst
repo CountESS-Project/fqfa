@@ -164,6 +164,38 @@ fqfa can read single FASTQ_ files or a pair of FASTQ_ files in parallel.
    ... BBBAAA
    ... """
    >>> for fwd, rev in parse_fastq_pe_reads(StringIO(fastq_fwd), StringIO(fastq_rev)):
+   ...     print(f"{fwd.sequence}-{rev.sequence}")
+   ACGTAA-TTTTTT
+   AAACCC-GGGCCC
+
+The :py:func:`~fqfa.fastq.fastq.parse_fastq_reads` and :py:func:`~fqfa.fastq.fastq.parse_fastq_pe_reads` functions are
+generators that return :py:class:`~fqfa.fastq.fastqread.FastqRead` objects, so the relevant class methods can be used
+for filtering or trimming of reads as they are processed.
+
+.. doctest:: fastq
+   :pyversion: >= 3.6
+
+   >>> fastq_fwd = """\
+   ... @TEST:123:456 AAA
+   ... ACGTAA
+   ... +
+   ... AAA!CD
+   ... @TEST:999:888 AAA
+   ... AAACCC
+   ... +
+   ... ABABAB
+   ... """
+   >>> fastq_rev = """\
+   ... @TEST:123:456 BBB
+   ... TTTTTT
+   ... +
+   ... ACACAC
+   ... @TEST:999:888 BBB
+   ... GGGCCC
+   ... +
+   ... BBBAAA
+   ... """
+   >>> for fwd, rev in parse_fastq_pe_reads(StringIO(fastq_fwd), StringIO(fastq_rev)):
    ...     if fwd.min_quality() > 20 and rev.min_quality() > 20:
    ...         print(f"{fwd.sequence}-{rev.sequence}")
    AAACCC-GGGCCC
