@@ -10,7 +10,7 @@ Basic sequence validation
 The validators in :py:mod:`fqfa.validator.validator` return a match object if the sequence validates or None if the
 sequence doesn't validate. This means that they can be used in simple if statements.
 
-.. testsetup::
+.. testsetup:: validators
 
    from fqfa.validator.validator import dna_bases_validator, dna_characters_validator
    from fqfa.validator.create import create_validator
@@ -18,7 +18,7 @@ sequence doesn't validate. This means that they can be used in simple if stateme
 
 This validator only accepts the standard DNA bases, so the input sequence is invalid.
 
-.. doctest::
+.. doctest:: validators
    :pyversion: >= 3.6
 
    >>> if dna_bases_validator("ACGTNW"):
@@ -29,7 +29,7 @@ This validator only accepts the standard DNA bases, so the input sequence is inv
 
 This validator accepts all IUPAC bases, so the input sequence is valid.
 
-.. doctest::
+.. doctest:: validators
    :pyversion: >= 3.6
 
    >>> if dna_characters_validator("ACGTNW"):
@@ -41,7 +41,7 @@ This validator accepts all IUPAC bases, so the input sequence is valid.
 The validators only accept strings (or bytes), as they are based on regular expressions.
 Attempting to validate anything else results in a :py:class:`TypeError`.
 
-.. doctest::
+.. doctest:: validators
    :pyversion: >= 3.6
 
    >>> if dna_characters_validator(42):
@@ -54,7 +54,7 @@ Attempting to validate anything else results in a :py:class:`TypeError`.
 
 Default validators only accept uppercase characters, so mixed-case or lowercase input is invalid.
 
-.. doctest::
+.. doctest:: validators
    :pyversion: >= 3.6
 
    >>> if dna_bases_validator("ACgT"):
@@ -65,7 +65,7 @@ Default validators only accept uppercase characters, so mixed-case or lowercase 
 
 Case-insensitive validators can be created using :py:func:`~fqfa.validator.create.create_validator`.
 
-.. doctest::
+.. doctest:: validators
    :pyversion: >= 3.6
 
    >>> case_insensitive_validator = create_validator(DNA_BASES, case_sensitive=False)
