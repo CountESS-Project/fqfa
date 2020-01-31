@@ -11,7 +11,7 @@ if sys.version_info.major == 3 and sys.version_info.minor == 6:
 
 setuptools.setup(
     name="fqfa",
-    version="0.0.1",
+    version="0.0.2",
     author="Alan F Rubin",
     author_email="alan.rubin@wehi.edu.au",
     description="A lightweight Python library for handling FASTQ and FASTA files.",
