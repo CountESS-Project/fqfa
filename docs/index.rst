@@ -16,6 +16,7 @@ Building a local copy of the documentation requires the following additional pac
 .. toctree::
    :maxdepth: 3
 
+   examples
    files
    validator
    util
