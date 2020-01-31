@@ -14,7 +14,7 @@ supporting the use of :py:func:`~fqfa.util.file.open_compressed`.
 .. automodule:: fqfa.util.file
    :members:
 
-Working with FASTA files
+FASTA files
 ========================
 
 fqfa has basic support for FASTA_ files.
@@ -32,7 +32,7 @@ No validation is performed on the sequences, but fqfa implements a set of
 .. automodule:: fqfa.fasta.fasta
    :members:
 
-Working with FASTQ files
+FASTQ files
 ========================
 
 fqfa supports reading FASTQ files either singly or as a pair (for paired-end data).
