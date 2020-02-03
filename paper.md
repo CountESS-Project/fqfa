@@ -29,6 +29,12 @@ fqfa is a pure Python package for working with files in FASTA and FASTQ formats.
 It has no dependencies outside of the Python standard library and makes use of newer language features such as type hinting to improve readability.
 This makes it more suitable for use in notebooks or projects with simple requirements, as well as easier to understand by novice bioinformaticians and students.
 
-fqfa is released under the BSD 3-Clause License and is available from GitHub and PyPI. 
+fqfa is released under the BSD 3-Clause License and is available from GitHub and PyPI.
+
+# Acknowledgements
+
+Thank you to Matthew Wakefield for helpful discussion and code review.
+The research benefited by support from the Victorian State Government Operational Infrastructure Support and Australian Government NHMRC Independent Research Institute Infrastructure Support.
+AFR was supported by the National Human Genome Research Institute of the NIH under award number RM1HG010461.
 
 # References
