@@ -14,9 +14,10 @@ Building a local copy of the documentation requires the following additional pac
     pip3 install sphinx-rtd-theme
 
 .. toctree::
-   :maxdepth: 3
+   :maxdepth: 2
 
    examples
    files
    validator
    util
+   benchmark
