@@ -13,7 +13,7 @@ affiliations:
    index: 1
  - name: The University of Melbourne
    index: 2
-date: 3 February 2020
+date: 20 February 2020
 bibliography: paper.bib
 
 ---
@@ -23,7 +23,7 @@ bibliography: paper.bib
 Modern bioinformatics requires the use of many field-specific file formats.
 Two of the most prevalent for representing biological sequences are FASTA [@pearson_improved_1988] and FASTQ [@cock_sanger_2010].
 While multiple feature-rich Python bioinformatics libraries exist [@cock_biopython_2009; @noauthor_biocorescikit-bio_2013], they require complex compiled dependencies that can limit their use in non-Unix environments.
-Other FASTA/FASTQ specific Python libraries [@pedersen_brentppyfasta_2010; @shirley_efficient_2015; @du_lmdupyfastx_2019] are either outdated or make heavy use of C extensions that prioritize speed over readability and portability. 
+Other FASTA/FASTQ specific Python libraries [@pedersen_brentppyfasta_2010; @hunt_sanger-pathogensfastaq_2013; @shirley_efficient_2015; @du_lmdupyfastx_2019] are either outdated, require runtime dependencies, or make heavy use of C extensions that prioritize speed over readability and portability. 
 
 fqfa is a pure Python package for working with files in FASTA and FASTQ formats.
 It has no dependencies outside of the Python standard library and makes use of newer language features such as type hinting to improve readability.
