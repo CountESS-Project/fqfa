@@ -1,6 +1,5 @@
 .. code:: ipython3
 
-    import pyfastx
     from fqfa.fastq.fastq import parse_fastq_reads
     from fqfa.util.file import open_compressed
 
@@ -64,7 +63,7 @@ the file.
 
 .. code:: ipython3
 
-    from statistics import mean, median
+    from statistics import median
 
 fqfa
 ----
