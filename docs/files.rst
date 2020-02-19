@@ -40,6 +40,10 @@ Reads are returned as :py:class:`~fqfa.fastq.fastqread.FastqRead` objects.
 These objects support several basic operations, such as in-place read trimming and calculating quality-based values.
 The sequence and headers are stored as strings, and the quality values are stored as a list of integers.
 
+Note that there are no FASTQ_ output functions, because the :py:meth:`~fqfa.fastq.fastqread.FastqRead.__str__`
+method formats a :py:class:`~fqfa.fastq.fastqread.FastqRead` object as a standard FASTQ_ record.
+Generating a FASTQ_ output file is as simple as printing all the objects.
+
 .. automodule:: fqfa.fastq.fastq
    :members:
 
