@@ -72,6 +72,9 @@ html_theme = "sphinx_rtd_theme"
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ["_static"]
 
+# Limit the generation of section labels to only the top two levels
+autosectionlabel_maxdepth = 2
+
 
 # Remove the module-level docstring when using autodoc. These module-level
 # docstrings are short and are replaced by longer blocks of text in the
