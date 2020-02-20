@@ -27,4 +27,4 @@ Contributions via pull request are welcome.
 Contributed code should have full unit test coverage, 
 [NumPy-style docstrings](https://numpydoc.readthedocs.io/en/latest/format.html#docstring-standard),
 [black formatting](https://github.com/psf/black),
-and [type hints](https://docs.python.org/3/library/typing.html)..
+and [type hints](https://docs.python.org/3/library/typing.html).
