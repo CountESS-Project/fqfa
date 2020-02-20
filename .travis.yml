@@ -15,7 +15,6 @@ before_script:
   - if ! $NO_MYPY; then pip3 install mypy; fi
   - pip3 install sphinx
   - pip3 install sphinx-rtd-theme
-  - pip3 install doctest
 script:
   - coverage run --source fqfa -m unittest
   - if ! $NO_MYPY; then mypy fqfa tests; fi
