@@ -30,7 +30,7 @@ It has no dependencies outside of the Python standard library (with the exceptio
 These implementation details make fqfa highly suitable for use in notebooks and projects that have simple requirements, with underlying code that is easy for novice bioinformaticians and students to understand and explore.
 
 Although fqfa is written in pure Python, its performance is comparable to modules using C extensions like pyfastx [@du_lmdupyfastx_2019] for tasks such as processing a FASTQ file sequentially and collecting or filtering on quality statistics from the high-throughput sequencing reads.
-Detailed benchmarking results and usage examples comparing fqfa and pyfastx [@du_lmdupyfastx_2019] are available as part of the fqfa documentation in static format as well as in Jupyter notebooks [Kluyver:2016aa].
+Detailed benchmarking results and usage examples comparing fqfa and pyfastx [@du_lmdupyfastx_2019] are available as part of the fqfa documentation in static format as well as in Jupyter notebooks [@Kluyver:2016aa].
 
 fqfa is released under the BSD 3-Clause License and is available from GitHub and PyPI.
 
