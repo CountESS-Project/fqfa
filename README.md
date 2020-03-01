@@ -1,7 +1,7 @@
+[![DOI](https://joss.theoj.org/papers/10.21105/joss.02076/status.svg)](https://doi.org/10.21105/joss.02076)
 [![Build Status](https://travis-ci.com/CountESS-Project/fqfa.svg?branch=master)](https://travis-ci.com/CountESS-Project/fqfa)
 [![Coverage Status](https://coveralls.io/repos/github/CountESS-Project/fqfa/badge.svg?branch=master)](https://coveralls.io/github/CountESS-Project/fqfa?branch=master)
 [![Documentation Status](https://readthedocs.org/projects/fqfa/badge/?version=latest)](https://fqfa.readthedocs.io/en/latest/?badge=latest)
-[![DOI](https://zenodo.org/badge/222571543.svg)](https://zenodo.org/badge/latestdoi/222571543)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
 # fqfa
@@ -21,7 +21,9 @@ Building the documentation requires the following additional packages:
 Online documentation including usage examples is available on 
 [Read the Docs](https://fqfa.readthedocs.io/en/latest/index.html).
 
-To report a problem or request a new feature, please use the GitHub issue tracker. 
+To report a problem or request a new feature, please use the GitHub issue tracker.
+
+To cite this package please refer to ["fqfa: A pure Python package for genomic sequence files"](https://doi.org/10.21105/joss.02076).
 
 Contributions via pull request are welcome. 
 Contributed code should have full unit test coverage, 
