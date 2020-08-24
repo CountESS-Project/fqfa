@@ -1,7 +1,7 @@
 from fqfa.validator.create import create_validator
 from fqfa.constants.iupac.dna import DNA_BASES, DNA_CHARACTERS
 from fqfa.constants.iupac.rna import RNA_BASES
-from fqfa.constants.iupac.protein import AA_CODES
+from fqfa.constants.iupac.protein import AA_CODES, AA_CODES_ALL
 
 dna_bases_validator = create_validator(DNA_BASES)
 """Callable[[str, int, int], Optional[Match[str]]]: validator for DNA bases.
@@ -29,5 +29,13 @@ amino_acids_validator = create_validator(list(AA_CODES.keys()))
 
 Returns a match object if all characters in the string are single-letter amino acid codes found in
 :py:data:`~fqfa.constants.iupac.protein.AA_CODES`.
+
+"""
+
+amino_acids_all_validator = create_validator(list(AA_CODES_ALL.keys()))
+"""Callable[[str, int, int], Optional[Match[str]]]: validator for amino acids including ambiguous amino acids.
+
+Returns a match object if all characters in the string are single-letter amino acid codes found in
+:py:data:`~fqfa.constants.iupac.protein.AA_CODES_ALL`.
 
 """
