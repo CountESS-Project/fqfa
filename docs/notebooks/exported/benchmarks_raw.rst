@@ -21,10 +21,10 @@ than the reads in this case:
 ::
 
    334M    BRCA1_input_sample.fq
-   48M     BRCA1_input_sample.fq.bz2
-   520M    BRCA1_input_sample.fq.fxi
-   68M     BRCA1_input_sample.fq.gz
-   522M    BRCA1_input_sample.fq.gz.fxi
+    48M    BRCA1_input_sample.fq.bz2
+   511M    BRCA1_input_sample.fq.fxi
+    68M    BRCA1_input_sample.fq.gz
+   513M    BRCA1_input_sample.fq.gz.fxi
 
 .. code:: ipython3
 
@@ -36,8 +36,8 @@ than the reads in this case:
 
 .. parsed-literal::
 
-    CPU times: user 29.5 s, sys: 17 s, total: 46.5 s
-    Wall time: 46.5 s
+    CPU times: user 6.69 s, sys: 993 ms, total: 7.68 s
+    Wall time: 7.73 s
     <Read> 140313_SN743_0432_AC3TTHACXX:4:1101:5633:2224:1#0/1 with length of 16
     <Read> 140313_SN743_0432_AC3TTHACXX:4:1101:6580:2239:1#0/1 with length of 16
     <Read> 140313_SN743_0432_AC3TTHACXX:4:1101:6929:2242:1#0/1 with length of 16
@@ -61,8 +61,8 @@ doesn’t perform any extra computation or quality value conversion.
 
 .. parsed-literal::
 
-    CPU times: user 1.68 s, sys: 384 ms, total: 2.07 s
-    Wall time: 2.07 s
+    CPU times: user 1.42 s, sys: 417 ms, total: 1.83 s
+    Wall time: 1.93 s
     ('140313_SN743_0432_AC3TTHACXX:4:1101:5633:2224:1#0/1', 'CCCGTGGCCTTTTCCA', 'B@CFFFFFHHHHHJJJ')
     ('140313_SN743_0432_AC3TTHACXX:4:1101:6580:2239:1#0/1', 'TTTGGTAAAGGGTAAC', 'BBCFFDFFHHHHDHIJ')
     ('140313_SN743_0432_AC3TTHACXX:4:1101:6929:2242:1#0/1', 'AATAATGTATGTACCT', 'BC@FFFFEFHHHHJJJ')
@@ -88,8 +88,8 @@ statement.
 
 .. parsed-literal::
 
-    CPU times: user 33.2 s, sys: 934 ms, total: 34.1 s
-    Wall time: 34 s
+    CPU times: user 26.7 s, sys: 1.03 s, total: 27.8 s
+    Wall time: 27.8 s
     @140313_SN743_0432_AC3TTHACXX:4:1101:5633:2224:1#0/1
     CCCGTGGCCTTTTCCA
     +
@@ -137,8 +137,8 @@ structure.
 
 .. parsed-literal::
 
-    CPU times: user 2min 6s, sys: 30.4 s, total: 2min 37s
-    Wall time: 2min 37s
+    CPU times: user 54.8 s, sys: 630 ms, total: 55.5 s
+    Wall time: 55.9 s
     Median average quality is 37.5
 
 
@@ -158,8 +158,8 @@ processing the input file.
 
 .. parsed-literal::
 
-    CPU times: user 1min 10s, sys: 87.3 ms, total: 1min 10s
-    Wall time: 1min 10s
+    CPU times: user 53.9 s, sys: 95.4 ms, total: 54 s
+    Wall time: 54 s
     Median average quality is 37.5
 
 
@@ -179,8 +179,8 @@ FastqRead class.
 
 .. parsed-literal::
 
-    CPU times: user 1min 27s, sys: 214 ms, total: 1min 27s
-    Wall time: 1min 27s
+    CPU times: user 1min 19s, sys: 146 ms, total: 1min 19s
+    Wall time: 1min 19s
     Median average quality is 37.5
 
 
@@ -188,8 +188,8 @@ Benchmark 3: filtering reads on quality
 =======================================
 
 This code creates a list of reads for which all bases are at least Q20.
-The performance and usage in this section is quite similar to Benchmark
-2.
+The performance and usage in this section is quite a bit faster than
+Benchmark 2 following recent performance improvements in pyfastx.
 
 pyfastx with index
 ------------------
@@ -203,9 +203,9 @@ pyfastx with index
 
 .. parsed-literal::
 
-    CPU times: user 41.1 s, sys: 24.7 s, total: 1min 5s
-    Wall time: 1min 5s
-    Kept 3641762 reads after applying filter.
+    CPU times: user 5.75 s, sys: 556 ms, total: 6.3 s
+    Wall time: 6.32 s
+    Kept 3641707 reads after applying filter.
 
 
 pyfastx without index
@@ -220,8 +220,8 @@ pyfastx without index
 
 .. parsed-literal::
 
-    CPU times: user 7.63 s, sys: 314 ms, total: 7.94 s
-    Wall time: 7.94 s
+    CPU times: user 6.71 s, sys: 472 ms, total: 7.18 s
+    Wall time: 7.25 s
     Kept 3641762 reads after applying filter.
 
 
@@ -241,9 +241,7 @@ class.
 
 .. parsed-literal::
 
-    CPU times: user 37.2 s, sys: 863 ms, total: 38.1 s
-    Wall time: 38 s
+    CPU times: user 30.9 s, sys: 4.38 s, total: 35.3 s
+    Wall time: 1min 15s
     Kept 3641762 reads after applying filter.
-
-
 
