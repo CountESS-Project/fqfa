@@ -31,8 +31,8 @@ statement.
 
 .. parsed-literal::
 
-    CPU times: user 51.3 s, sys: 993 ms, total: 52.3 s
-    Wall time: 52.3 s
+    CPU times: user 42.2 s, sys: 1.05 s, total: 43.3 s
+    Wall time: 43.4 s
     @140313_SN743_0432_AC3TTHACXX:4:1101:5633:2224:1#0/1
     CCCGTGGCCTTTTCCA
     +
@@ -81,8 +81,8 @@ FastqRead class.
 
 .. parsed-literal::
 
-    CPU times: user 1min 59s, sys: 174 ms, total: 1min 59s
-    Wall time: 1min 59s
+    CPU times: user 1min 35s, sys: 277 ms, total: 1min 35s
+    Wall time: 1min 35s
     Median average quality is 37.5
 
 
@@ -109,9 +109,7 @@ class.
 
 .. parsed-literal::
 
-    CPU times: user 58.8 s, sys: 848 ms, total: 59.7 s
-    Wall time: 59.7 s
+    CPU times: user 43 s, sys: 784 ms, total: 43.8 s
+    Wall time: 43.8 s
     Kept 3641762 reads after applying filter.
-
-
 
