@@ -24,3 +24,9 @@ Coding sequence translation
 
 .. automodule:: fqfa.constants.translation.table
    :members:
+
+Sequence type inference functions
+=================================
+
+.. automodule:: fqfa.util.infer
+   :members:
