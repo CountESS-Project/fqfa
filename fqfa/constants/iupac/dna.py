@@ -4,6 +4,8 @@
 
 from typing import List, Dict
 
+__all__ = ["DNA_BASES", "DNA_AMBIGUITY", "DNA_CHARACTERS", "DNA_COMPLEMENTS"]
+
 DNA_BASES: List[str] = [
     "A",  # Adenine
     "C",  # Cytosine

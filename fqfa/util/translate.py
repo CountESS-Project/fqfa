@@ -6,6 +6,8 @@ from typing import Dict, Tuple, Optional
 from fqfa.constants.translation.table import CODON_TABLE
 from fqfa.validator.validator import dna_bases_validator, amino_acids_validator
 
+__all__ = ["translate_dna", "ncbi_genetic_code_to_dict"]
+
 
 def translate_dna(
     seq: str, table: Optional[Dict[str, str]] = None, frame: int = 0

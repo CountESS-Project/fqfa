@@ -6,6 +6,8 @@ from typing import TextIO, Generator, Tuple
 from itertools import zip_longest
 from fqfa.fastq.fastqread import FastqRead
 
+__all__ = ["parse_fastq_reads", "parse_fastq_pe_reads"]
+
 
 def parse_fastq_reads(handle: TextIO) -> Generator[FastqRead, None, None]:
     """Generator function that returns FASTQ reads as objects.

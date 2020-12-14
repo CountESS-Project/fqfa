@@ -6,6 +6,8 @@ import textwrap
 import string
 from typing import TextIO, Generator, Tuple
 
+__all__ = ["parse_fasta_records", "write_fasta_record"]
+
 
 def parse_fasta_records(handle: TextIO) -> Generator[Tuple[str, str], None, None]:
     """Generator function that returns tuples of FASTA headers and their associated sequences.

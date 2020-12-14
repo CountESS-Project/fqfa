@@ -4,6 +4,8 @@
 
 from fqfa.constants.iupac.dna import DNA_COMPLEMENTS
 
+__all__ = ["reverse_complement", "convert_rna_to_dna", "convert_dna_to_rna"]
+
 _DNA_COMPLEMENTS_TRANS = str.maketrans(DNA_COMPLEMENTS)
 """Mapping[int, str]: translation table for complementing DNA bases, including IUPAC ambiguity characters.
 
