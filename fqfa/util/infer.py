@@ -18,11 +18,11 @@ def infer_sequence_type(seq: str, report_iupac: bool = True) -> Optional[str]:
     """Infer the type of the given sequence.
 
     Returns the first sequence type that validates given the following priority order:
-    * "dna"
-    * "dna-iupac" (DNA sequence that contains ambiguity characters)
-    * "rna"
-    * "protein"
-    * "protein-iupac" (protein sequence that contains ambiguity characters)
+        * "dna"
+        * "dna-iupac" (DNA sequence that contains ambiguity characters)
+        * "rna"
+        * "protein"
+        * "protein-iupac" (protein sequence that contains ambiguity characters)
 
     Parameters
     ----------
@@ -65,11 +65,11 @@ def infer_all_sequence_types(
     """Return all inferred types for the given sequence.
 
     Sequence types include:
-    * "dna"
-    * "dna-iupac" (DNA sequence that contains ambiguity characters)
-    * "rna"
-    * "protein"
-    * "protein-iupac" (protein sequence that contains ambiguity characters)
+        * "dna"
+        * "dna-iupac" (DNA sequence that contains ambiguity characters)
+        * "rna"
+        * "protein"
+        * "protein-iupac" (protein sequence that contains ambiguity characters)
 
     Parameters
     ----------
