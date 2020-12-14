@@ -24,6 +24,6 @@ before_script:
 script:
   - coverage run --source fqfa -m unittest
   - if ! $NO_MYPY; then mypy fqfa tests; fi
-#  - cd docs && make doctest
+  - cd docs && make doctest && cd ..
 after_success:
   - coveralls
