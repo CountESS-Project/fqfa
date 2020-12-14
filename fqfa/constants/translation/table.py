@@ -4,6 +4,8 @@
 
 from typing import Dict
 
+__all__ = ["CODON_TABLE"]
+
 CODON_TABLE: Dict[str, str] = {
     "AAA": "K",  # Lysine
     "AAC": "N",  # Asparagine

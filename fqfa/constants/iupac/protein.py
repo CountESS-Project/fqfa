@@ -4,6 +4,8 @@
 
 from typing import Dict
 
+__all__ = ["AA_CODES", "AA_CODES_AMBIGUITY", "AA_CODES_ALL"]
+
 AA_CODES: Dict[str, str] = {
     "A": "Ala",  # Alanine
     "R": "Arg",  # Arginine

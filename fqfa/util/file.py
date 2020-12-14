@@ -7,6 +7,8 @@ import bz2
 import gzip
 from typing import Optional, IO, Any
 
+__all__ = ["open_compressed", "has_fastq_ext", "has_fasta_ext"]
+
 _COMPRESSION_EXTENSIONS = [".bz2", ".gz"]
 """List[str]: list of recognized compression extensions.
 

@@ -11,6 +11,8 @@ from fqfa.validator.validator import (
     amino_acids_all_validator,
 )
 
+__all__ = ["infer_sequence_type", "infer_all_sequence_types"]
+
 
 def infer_sequence_type(seq: str, report_iupac: bool = True) -> Optional[str]:
     """Infer the type of the given sequence.

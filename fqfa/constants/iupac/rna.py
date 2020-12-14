@@ -4,6 +4,8 @@
 
 from typing import List
 
+__all__ = ["RNA_BASES"]
+
 RNA_BASES: List[str] = [
     "A",  # Adenine
     "C",  # Cytosine
