@@ -1,6 +1,6 @@
 [![DOI](https://joss.theoj.org/papers/10.21105/joss.02076/status.svg)](https://doi.org/10.21105/joss.02076)
-[![Build Status](https://travis-ci.com/CountESS-Project/fqfa.svg?branch=master)](https://travis-ci.com/CountESS-Project/fqfa)
-[![Coverage Status](https://coveralls.io/repos/github/CountESS-Project/fqfa/badge.svg?branch=master)](https://coveralls.io/github/CountESS-Project/fqfa?branch=master)
+[![Build Status](https://travis-ci.com/CountESS-Project/fqfa.svg?branch=main)](https://travis-ci.com/CountESS-Project/fqfa)
+[![Coverage Status](https://coveralls.io/repos/github/CountESS-Project/fqfa/badge.svg?branch=main)](https://coveralls.io/github/CountESS-Project/fqfa?branch=main)
 [![Documentation Status](https://readthedocs.org/projects/fqfa/badge/?version=latest)](https://fqfa.readthedocs.io/en/latest/?badge=latest)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
