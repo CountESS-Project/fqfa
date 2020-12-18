@@ -19,9 +19,9 @@ def infer_sequence_type(seq: str, report_iupac: bool = True) -> Optional[str]:
 
     Returns the first sequence type that validates given the following priority order:
         * "dna"
-        * "dna-iupac" (DNA sequence that contains ambiguity characters)
         * "rna"
         * "protein"
+        * "dna-iupac" (DNA sequence that contains ambiguity characters)
         * "protein-iupac" (protein sequence that contains ambiguity characters)
 
     Parameters
@@ -41,15 +41,15 @@ def infer_sequence_type(seq: str, report_iupac: bool = True) -> Optional[str]:
     """
     if dna_bases_validator(seq):
         return "dna"
+    elif rna_bases_validator(seq):
+        return "rna"
+    elif amino_acids_validator(seq):
+        return "protein"
     elif dna_characters_validator(seq):
         if report_iupac:
             return "dna-iupac"
         else:
             return "dna"
-    elif rna_bases_validator(seq):
-        return "rna"
-    elif amino_acids_validator(seq):
-        return "protein"
     elif amino_acids_all_validator(seq):
         if report_iupac:
             return "protein-iupac"
