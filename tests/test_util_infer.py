@@ -9,8 +9,8 @@ class TestInferSequenceType(unittest.TestCase):
         self.assertEqual(infer_sequence_type("TTTTT"), "dna")
 
     def test_dna_iupac(self):
-        self.assertEqual(infer_sequence_type("AWGT", report_iupac=True), "dna-iupac")
-        self.assertEqual(infer_sequence_type("AWGT", report_iupac=False), "dna")
+        self.assertEqual(infer_sequence_type("ABGT", report_iupac=True), "dna-iupac")
+        self.assertEqual(infer_sequence_type("ABGT", report_iupac=False), "dna")
 
     def test_rna(self):
         self.assertEqual(infer_sequence_type("ACGU"), "rna")
