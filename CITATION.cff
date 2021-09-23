@@ -1,0 +1,25 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+authors:
+- family-names: "Rubin"
+  given-names: "Alan F"
+  orcid: "https://orcid.org/0000-0003-1474-605X"
+title: "fqfa"
+version: 1.2.1
+doi: 10.5281/zenodo.4346283
+date-released: 2020-12-18
+url: "https://github.com/CountESS-Project/fqfa"
+preferred-citation:
+  type: article
+  authors:
+  - family-names: "Rubin"
+    given-names: "Alan F"
+    orcid: "https://orcid.org/0000-0003-1474-605X"
+  doi: "10.21105/joss.02076"
+  journal: "Journal of Open Source Software"
+  month: 3
+  start: 2076
+  title: "fqfa: A pure Python package for genomic sequence files"
+  issue: 47
+  volume: 5
+  year: 2020
