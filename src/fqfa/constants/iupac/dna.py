@@ -14,10 +14,10 @@ DNA_BASES: List[str] = [
 ]
 """List[str]: The four DNA bases.
 
-.. csv-table:: 
+.. csv-table::
    :header: "Symbol", "Description"
    :widths: 5, 10
-   
+
     "A",  "Adenine"
     "C",  "Cytosine"
     "G",  "Guanine"
@@ -40,10 +40,10 @@ DNA_AMBIGUITY: List[str] = [
 ]
 """List[str]: IUPAC ambiguity characters for DNA sequence.
 
-.. csv-table:: 
+.. csv-table::
    :header: "Symbol", "Description", "Bases"
    :widths: 5, 10, 5
-   
+
     "W",  "Weak", "AT"
     "S",  "Strong", "GC"
     "M",  "aMino", "AC"
@@ -61,10 +61,10 @@ DNA_AMBIGUITY: List[str] = [
 DNA_CHARACTERS: List[str] = DNA_BASES + DNA_AMBIGUITY
 """List[str]: Bases and IUPAC ambiguity characters for DNA sequence.
 
-.. csv-table:: 
+.. csv-table::
    :header: "Symbol", "Description", "Bases"
    :widths: 5, 10, 5
-   
+
     "A",  "Adenine", "A"
     "C",  "Cytosine", "C"
     "G",  "Guanine", "G"
@@ -102,7 +102,7 @@ DNA_COMPLEMENTS: Dict[str, str] = {
 }
 """Dict[str, str]: Map for complementing DNA sequences.
 
-.. csv-table:: 
+.. csv-table::
    :header: "Symbol", "Complement", "Bases", "Comp. Bases"
    :widths: 5, 5, 5, 5
 

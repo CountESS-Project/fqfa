@@ -14,10 +14,10 @@ RNA_BASES: List[str] = [
 ]
 """List[str]: The four RNA bases.
 
-.. csv-table:: 
+.. csv-table::
    :header: "Symbol", "Description"
    :widths: 5, 10
-   
+
     "A",  "Adenine"
     "C",  "Cytosine"
     "G",  "Guanine"

@@ -28,6 +28,7 @@ def parse_fasta_records(handle: TextIO) -> Generator[Tuple[str, str], None, None
 
     """
     header = None
+    seq_lines = None
     for line in handle:
         if line.startswith(">"):
             if header is not None:  # not the first record
