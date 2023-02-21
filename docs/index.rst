@@ -10,6 +10,10 @@ Install fqfa from PyPI using pip::
 
     pip3 install fqfa
 
+To install the package for development purposes, include the optional dependencies::
+
+    pip3 install fqfa[dev]
+
 Building a local copy of the documentation requires the following additional packages::
 
     pip3 install sphinx
