@@ -29,7 +29,8 @@ AA_CODES: Dict[str, str] = {
     "V": "Val",  # Valine
     "*": "Ter",  # termination codon
 }
-r"""Dict[str, str]: Map from single-letter amino acid codes to three-letter codes. Sorted by three-letter code.
+r"""Dict[str, str]: Map from single-letter amino acid codes to three-letter codes.
+Sorted by three-letter code.
 
 .. csv-table::
    :header: "Single-letter", "Three-letter", "Amino Acid"
@@ -64,7 +65,8 @@ AA_CODES_AMBIGUITY: Dict[str, str] = {
     "Z": "Glx",  # Glutamine or Glutamic acid
     "X": "Xaa",  # Any amino acid
 }
-"""Dict[str, str]: Map from ambiguous single-letter amino acid codes to three-letter codes. Sorted by three-letter code.
+"""Dict[str, str]: Map from ambiguous single-letter amino acid codes to three-letter
+codes. Sorted by three-letter code.
 
 .. csv-table::
    :header: "Single-letter", "Three-letter", "Amino Acid"
@@ -77,7 +79,8 @@ AA_CODES_AMBIGUITY: Dict[str, str] = {
 """
 
 AA_CODES_ALL: Dict[str, str] = {**AA_CODES, **AA_CODES_AMBIGUITY}
-r"""Dict[str, str]: Map from all single-letter amino acid codes to three-letter codes. Sorted by three-letter code.
+r"""Dict[str, str]: Map from all single-letter amino acid codes to three-letter codes.
+Sorted by three-letter code.
 
 .. csv-table::
    :header: "Single-letter", "Three-letter", "Amino Acid"

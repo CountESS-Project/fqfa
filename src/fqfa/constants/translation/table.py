@@ -72,7 +72,8 @@ CODON_TABLE: Dict[str, str] = {
     "TTG": "L",  # Leucine
     "TTT": "F",  # Phenylalanine
 }
-r"""Dict[str, str]: Map from codons to single-letter amino acid codes according to the standard code. Sorted by codon.
+r"""Dict[str, str]: Map from codons to single-letter amino acid codes according to the
+standard code. Sorted by codon.
 
 .. csv-table::
    :header: "Codon", "Symbol", "Amino Acid"

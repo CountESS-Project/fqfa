@@ -57,9 +57,11 @@ class FastqRead:
     ] = create_validator(DNA_BASES + ["N"])
 
     def __post_init__(self, quality_string: str) -> None:
-        """Perform some basic checks on the input and converts the quality string into a list of integers.
+        """Perform some basic checks on the input and converts the quality string into a
+        list of integers.
 
-        The quality string is converted to integers using the ``quality_encoding_value``.
+        The quality string is converted to integers using the
+        ``quality_encoding_value``.
         This defaults to Sanger-style quality values (minimum value of 33).
 
         Parameters
@@ -151,16 +153,19 @@ class FastqRead:
         return min(self.quality)
 
     def trim(self, start: int = 1, end: Optional[int] = None) -> None:
-        """Trim the read such that it contains bases between ``start`` and ``end`` (inclusive).
+        """Trim the read such that it contains bases between ``start`` and ``end``
+        (inclusive).
 
         Bases are numbered starting at 1.
 
         Parameters
         ----------
         start : int
-            The first base to retain (1-indexed). Defaults to 1, which will not trim the start.
+            The first base to retain (1-indexed). Defaults to 1, which will not trim the
+            start.
         end : Optional[int]
-            The last base to retain (1-indexed). Defaults to ``None``, which will not trim the end.
+            The last base to retain (1-indexed). Defaults to ``None``, which will not
+            trim the end.
 
         Returns
         -------
@@ -195,7 +200,8 @@ class FastqRead:
             The length of the read after trimming.
 
         start : int
-            The first base to retain (1-indexed). Defaults to 1, which will not trim the start.
+            The first base to retain (1-indexed). Defaults to 1, which will not trim the
+            start.
 
         Returns
         -------

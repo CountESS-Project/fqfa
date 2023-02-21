@@ -68,8 +68,10 @@ def parse_fastq_pe_reads(
     ValueError
         If the two file handles have a different number of reads.
     ValueError
-        If the read header portion before the first whitespace doesn't match between read pairs.
-        This usually contains the machine ID and read coordinates, and is therefore expected to match for PE data.
+        If the read header portion before the first whitespace doesn't match between
+        read pairs.
+        This usually contains the machine ID and read coordinates, and is therefore
+        expected to match for PE data.
 
     """
     fwd_generator = parse_fastq_reads(handle_fwd)

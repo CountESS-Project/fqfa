@@ -10,10 +10,12 @@ __all__ = ["parse_fasta_records", "write_fasta_record"]
 
 
 def parse_fasta_records(handle: TextIO) -> Generator[Tuple[str, str], None, None]:
-    """Generator function that returns tuples of FASTA headers and their associated sequences.
+    """Generator function that returns tuples of FASTA headers and their associated
+    sequences.
 
     Lines before the start of the first record are ignored.
-    Any leading and trailing whitespace is removed before the sequence lines are concatenated together.
+    Any leading and trailing whitespace is removed before the sequence lines are
+    concatenated together.
     No validation of the characters in the FASTA record is performed.
 
     Parameters
@@ -48,7 +50,8 @@ def parse_fasta_records(handle: TextIO) -> Generator[Tuple[str, str], None, None
 def write_fasta_record(handle: TextIO, header: str, seq: str, width: int = 60) -> None:
     """Writes a FASTA record to an open file handle.
 
-    Leading and trailing whitespace will be removed from the header and all whitespace will be removed from the
+    Leading and trailing whitespace will be removed from the header and all whitespace
+    will be removed from the
     sequence before generating output.
 
     Parameters
