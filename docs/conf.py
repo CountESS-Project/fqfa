@@ -19,11 +19,11 @@ sys.path.insert(0, os.path.abspath(".."))
 # -- Project information -----------------------------------------------------
 
 project = "fqfa"
-copyright = "2019-2020, Alan F Rubin"
+copyright = "2019-2023, Alan F Rubin"
 author = "Alan F Rubin"
 
 # The full version, including alpha/beta/rc tags
-release = "1.2.1"
+release = "1.2.2"
 
 
 # -- General configuration ---------------------------------------------------
