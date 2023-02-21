@@ -7,17 +7,20 @@ from fqfa.constants.iupac.dna import DNA_COMPLEMENTS
 __all__ = ["reverse_complement", "convert_rna_to_dna", "convert_dna_to_rna"]
 
 _DNA_COMPLEMENTS_TRANS = str.maketrans(DNA_COMPLEMENTS)
-"""Mapping[int, str]: translation table for complementing DNA bases, including IUPAC ambiguity characters.
+"""Mapping[int, str]: translation table for complementing DNA bases, including IUPAC
+ambiguity characters.
 
 """
 
 _RNA_DNA_TRANS = str.maketrans("U", "T")
-"""Mapping[int, str]: translation table for converting U bases to T bases in RNA sequences.
+"""Mapping[int, str]: translation table for converting U bases to T bases in RNA
+sequences.
 
 """
 
 _DNA_RNA_TRANS = str.maketrans("T", "U")
-"""Mapping[int, str]: translation table for converting T bases to U bases in DNA sequences.
+"""Mapping[int, str]: translation table for converting T bases to U bases in DNA
+sequences.
 
 """
 

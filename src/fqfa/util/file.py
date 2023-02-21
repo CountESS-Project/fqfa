@@ -16,10 +16,12 @@ _COMPRESSION_EXTENSIONS = [".bz2", ".gz"]
 
 
 def open_compressed(path: str, encoding: Optional[str] = None) -> IO[Any]:
-    """Open the file handle for reading using the correct (optional) decompression method.
+    """Open the file handle for reading using the correct (optional) decompression
+    method.
 
     Compression status is determined by the file extension.
-    Recognized file extensions are ``.bz2`` for bzip2 compression and ``.gz`` for gzip compression.
+    Recognized file extensions are ``.bz2`` for bzip2 compression and ``.gz`` for gzip
+    compression.
     If there is any other file extension (or no extension), the file is opened normally.
     The file is opened in text mode.
 
@@ -60,7 +62,8 @@ def open_compressed(path: str, encoding: Optional[str] = None) -> IO[Any]:
 def has_fastq_ext(path: str) -> bool:
     """Checks whether the file path has the expected file extension for FASTQ format.
 
-    Recognized file extensions are ``.fq`` and ``.fastq`` optionally in combination with a compression file extension
+    Recognized file extensions are ``.fq`` and ``.fastq`` optionally in combination with
+    a compression file extension
     supported by :py:func:`~fqfa.util.file.open_compressed`.
 
     Parameters
@@ -86,7 +89,8 @@ def has_fastq_ext(path: str) -> bool:
 def has_fasta_ext(path: str) -> bool:
     """Checks whether the file path has the expected file extension for FASTA format.
 
-    Recognized file extensions are ``.fa`` and ``.fasta`` optionally in combination with a compression file extension
+    Recognized file extensions are ``.fa`` and ``.fasta`` optionally in combination with
+    a compression file extension
     supported by :py:func:`~fqfa.util.file.open_compressed`.
 
     Parameters

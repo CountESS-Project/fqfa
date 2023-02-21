@@ -96,7 +96,8 @@ class TestYieldFastqReadsPe(unittest.TestCase):
 
         iterator = parse_fastq_pe_reads(fwd_data, rev_data, revcomp=True)
 
-        test_rev_read.reverse_complement()  # take reverse complement for comparison after creating the test data
+        # take reverse complement for comparison after creating the test data
+        test_rev_read.reverse_complement()
         self.assertTupleEqual(next(iterator), (test_fwd_read, test_rev_read))
 
     def test_truncated(self) -> None:

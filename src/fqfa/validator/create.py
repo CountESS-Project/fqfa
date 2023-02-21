@@ -9,15 +9,18 @@ def create_validator(
 ) -> Callable[[str], Optional[Match[str]]]:
     """Function that generates a callable, regular-expression based sequence validator.
 
-    When called on a given string, the validator will return a Match object if every character is one of the
+    When called on a given string, the validator will return a Match object if every
+    character is one of the
     valid_characters, else None.
 
     Parameters
     ----------
     valid_characters : Union[str, List[str]]
-        A string or list of single-character strings defining the set of valid characters.
+        A string or list of single-character strings defining the set of valid
+        characters.
     case_sensitive : bool
-        False if both upper- and lower-case characters in valid_characters are valid. Default True.
+        False if both upper- and lower-case characters in valid_characters are valid.
+        Default True.
 
     Returns
     -------

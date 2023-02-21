@@ -9,6 +9,8 @@ from fqfa.util.nucleotide import (
 )
 from fqfa.util.translate import translate_dna, ncbi_genetic_code_to_dict
 
+__version__ = "1.2.2"
+
 __all__ = [
     "parse_fasta_records",
     "write_fasta_record",

@@ -20,15 +20,19 @@ def translate_dna(
     seq : str
         String containing DNA bases to translate.
     table : Optional(Dict[str, str])
-        Map from codon strings to single-letter amino acid codes or `None` to use the default translation table.
+        Map from codon strings to single-letter amino acid codes or `None` to use the
+        default translation table.
     frame : int
-        Integer with value in (0, 1, 2) defining the position in the sequence to start at.
+        Integer with value in (0, 1, 2) defining the position in the sequence to start
+        at.
 
     Returns
     -------
     Tuple[str, Optional[str]]
-        Returns a Tuple where the first string consists of the single-letter amino acid codes and the second string
-        contains any remaining bases in a trailing partial codon (or `None` if there was no remainder).
+        Returns a Tuple where the first string consists of the single-letter amino acid
+        codes and the second string
+        contains any remaining bases in a trailing partial codon (or `None` if there was
+        no remainder).
 
     Raises
     ------
@@ -56,7 +60,9 @@ def translate_dna(
     return "".join(aa_seq), remainder
 
 
-def ncbi_genetic_code_to_dict(ncbi_string: str) -> Dict[str, str]:
+def ncbi_genetic_code_to_dict(  # noqa: max-complexity: 11
+    ncbi_string: str,
+) -> Dict[str, str]:
     """Parse a translation table from NCBI into a dictionary.
 
     The five-line table input is parsed into a dictionary representation suitable for
@@ -65,7 +71,8 @@ def ncbi_genetic_code_to_dict(ncbi_string: str) -> Dict[str, str]:
     :py:data:`~fqfa.constants.translation.table.CODON_TABLE`.
 
     NCBI translation tables can be found
-    `here <https://www.ncbi.nlm.nih.gov/Taxonomy/Utils/wprintgc.cgi?chapter=cgencodes>`_.
+    `here <https://www.ncbi.nlm.nih.gov/Taxonomy/Utils/wprintgc.cgi?chapter=cgencodes>`_
+    .
 
     The standard genetic code is encoded by::
 
@@ -78,7 +85,8 @@ def ncbi_genetic_code_to_dict(ncbi_string: str) -> Dict[str, str]:
 
     Information from the `Starts` line is not retained in the dictionary representation.
 
-    Blank lines or whitespace-only lines are automatically skipped, as are lines beginning with `#`.
+    Blank lines or whitespace-only lines are automatically skipped, as are lines
+    beginning with `#`.
 
     Parameters
     ----------
