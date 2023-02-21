@@ -25,7 +25,16 @@ dependencies = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/CountESS-Project/fqfa"
+repository = "https://github.com/CountESS-Project/fqfa"
+documentation = "https://fqfa.readthedocs.io/"
+
+[project.optional-dependencies]
+dev = [
+    "black",
+    "flake8",
+    "pre-commit",
+    "pytest",
+]
 
 [tool.hatch.version]
 path = "src/fqfa/__init__.py"
