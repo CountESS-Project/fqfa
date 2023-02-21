@@ -47,7 +47,7 @@ def translate_dna(
 
     aa_seq = list()
     for i in range(frame, len(seq) - remainder_length, 3):
-        codon = seq[i: i + 3]
+        codon = seq[i : i + 3]
         try:
             aa_seq.append(table[codon])
         except KeyError:
@@ -56,7 +56,9 @@ def translate_dna(
     return "".join(aa_seq), remainder
 
 
-def ncbi_genetic_code_to_dict(ncbi_string: str) -> Dict[str, str]:  # noqa: max-complexity: 11
+def ncbi_genetic_code_to_dict(  # noqa: max-complexity: 11
+    ncbi_string: str,
+) -> Dict[str, str]:
     """Parse a translation table from NCBI into a dictionary.
 
     The five-line table input is parsed into a dictionary representation suitable for

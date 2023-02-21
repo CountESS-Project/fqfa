@@ -181,8 +181,8 @@ class FastqRead:
         if end is not None:
             if end < start:
                 raise ValueError("invalid trimming parameters")
-        self.sequence = self.sequence[start - 1: end]
-        self.quality = self.quality[start - 1: end]
+        self.sequence = self.sequence[start - 1 : end]
+        self.quality = self.quality[start - 1 : end]
 
     def trim_length(self, length: int, start: int = 1) -> None:
         """Trim the read to a specific length, beginning at ``start``.
