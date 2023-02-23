@@ -45,6 +45,7 @@ packages = ["src/fqfa"]
 [tool.hatch.build.targets.sdist]
 exclude = [
     "docs/",
+    ".readthedocs.yaml",
     ".github/",
     "paper.*",
 ]
