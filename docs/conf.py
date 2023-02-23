@@ -12,6 +12,7 @@
 
 import os
 import sys
+from fqfa import __version__
 
 sys.path.insert(0, os.path.abspath(".."))
 
@@ -23,7 +24,7 @@ copyright = "2019-2023, Alan F Rubin"
 author = "Alan F Rubin"
 
 # The full version, including alpha/beta/rc tags
-release = "1.2.2"
+release = __version__
 
 
 # -- General configuration ---------------------------------------------------

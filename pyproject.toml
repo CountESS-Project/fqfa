@@ -39,7 +39,12 @@ dev = [
 [tool.hatch.version]
 path = "src/fqfa/__init__.py"
 
+[tool.hatch.build.targets.wheel]
+packages = ["src/fqfa"]
+
 [tool.hatch.build.targets.sdist]
-include = [
-    "/tests",
+exclude = [
+    "docs/",
+    ".github/",
+    "paper.*",
 ]
