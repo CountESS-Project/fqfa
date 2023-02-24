@@ -11,9 +11,11 @@ Install fqfa from PyPI using pip:
 
     pip3 install fqfa
 
-To install the package for development purposes, include the optional dependencies:
+To set up the package for development purposes, include the optional dependencies and
+install pre-commit:
 
     pip3 install fqfa[dev]
+    pre-commit install
 
 Building the documentation requires the following additional packages:
 
