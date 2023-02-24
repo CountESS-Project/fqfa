@@ -1,3 +1,2 @@
 ipython
-fqfa
 sphinx>=5.3.0
