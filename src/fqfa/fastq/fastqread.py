@@ -4,7 +4,6 @@
 
 from dataclasses import dataclass, field, InitVar
 from typing import List, Optional, ClassVar, Callable, Match
-from statistics import mean
 from fqfa.util.nucleotide import reverse_complement
 from fqfa.validator.create import create_validator
 from fqfa.constants.iupac.dna import DNA_BASES
@@ -99,7 +98,10 @@ class FastqRead:
             # mypy false positive: https://github.com/python/mypy/issues/5485
             raise ValueError("unexpected characters in sequence")
 
-        self.quality = [ord(c) - self.quality_encoding_value for c in quality_string]
+        quality_string_bytes = quality_string.encode('ascii')
+        qev = self.quality_encoding_value
+        self.quality = [qsb - qev for qsb in quality_string_bytes]
+
         if min(self.quality) < 0:
             raise ValueError("sequence quality value below 0")
         if max(self.quality) > 93:
@@ -139,7 +141,7 @@ class FastqRead:
             Mean quality value.
 
         """
-        return mean(self.quality)
+        return sum(self.quality)/len(self.quality)
 
     def min_quality(self) -> int:
         """Calculates and returns the read's minimum quality value.
