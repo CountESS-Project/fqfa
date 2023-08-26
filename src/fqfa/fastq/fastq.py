@@ -37,7 +37,8 @@ def parse_fastq_reads(handle: TextIO) -> Generator[FastqRead, None, None]:
             raise ValueError("incomplete FASTQ record")
         else:
             lines = [x.rstrip() for x in lines]  # remove trailing newlines
-            yield FastqRead(*lines)
+            # TODO: figure out why mypy doesn't like this
+            yield FastqRead(*lines)  # type: ignore[arg-type]
 
 
 def parse_fastq_pe_reads(
@@ -80,9 +81,9 @@ def parse_fastq_pe_reads(
     for fwd, rev in zip_longest(fwd_generator, rev_generator, fillvalue=None):
         if None in (fwd, rev):
             raise ValueError("mismatched FASTQ file lengths")
-        elif fwd.header.split()[0] != rev.header.split()[0]:
+        elif fwd.header.split()[0] != rev.header.split()[0]:  # type: ignore[union-attr]
             raise ValueError("forward and reverse read headers do not match")
         else:
             if revcomp:
-                rev.reverse_complement()
-            yield fwd, rev
+                rev.reverse_complement()  # type: ignore[union-attr]
+            yield fwd, rev  # type: ignore[misc]
