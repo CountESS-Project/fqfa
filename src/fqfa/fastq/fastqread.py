@@ -96,7 +96,7 @@ class FastqRead:
             # mypy false positive: https://github.com/python/mypy/issues/5485
             raise ValueError("unexpected characters in sequence")
 
-        quality_string_bytes = quality_string.encode('ascii')
+        quality_string_bytes = quality_string.encode("ascii")
         qev = self.quality_encoding_value
         self.quality = [qsb - qev for qsb in quality_string_bytes]
 
@@ -137,7 +137,7 @@ class FastqRead:
             Mean quality value.
 
         """
-        return sum(self.quality)/len(self.quality)
+        return sum(self.quality) / len(self.quality)
 
     def min_quality(self) -> int:
         """Calculates and returns the read's minimum quality value.
