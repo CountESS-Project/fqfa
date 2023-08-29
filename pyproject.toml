@@ -35,6 +35,7 @@ dev = [
     "pre-commit",
     "pytest",
     "Flake8-pyproject",
+    "mypy",
 ]
 
 [tool.black]
