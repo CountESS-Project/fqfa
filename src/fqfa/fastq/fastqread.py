@@ -52,9 +52,7 @@ class FastqRead:
     quality: List[int] = field(init=False)
     quality_string: InitVar[str]
     quality_encoding_value: int = 33
-    _sequence_validator: ClassVar[
-        Callable[[str], Optional[Match[str]]]
-    ] = create_validator(DNA_BASES + ["N"])
+    _sequence_validator: ClassVar[Callable[[str], Optional[Match[str]]]] = create_validator(DNA_BASES + ["N"])
 
     def __post_init__(self, quality_string: str) -> None:
         """Perform some basic checks on the input and converts the quality string into a
@@ -125,9 +123,7 @@ class FastqRead:
             Reconstruction of the original FASTQ record.
 
         """
-        quality_string = "".join(
-            [chr(q + self.quality_encoding_value) for q in self.quality]
-        )
+        quality_string = "".join([chr(q + self.quality_encoding_value) for q in self.quality])
         return "\n".join((self.header, self.sequence, self.header2, quality_string))
 
     def average_quality(self) -> float:

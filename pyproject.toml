@@ -36,6 +36,9 @@ dev = [
     "pytest",
 ]
 
+[tool.black]
+line-length = 120
+
 [tool.hatch.version]
 path = "src/fqfa/__init__.py"
 

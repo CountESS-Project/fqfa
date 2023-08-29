@@ -22,9 +22,7 @@ class TestFastqRead(unittest.TestCase):
         self.assertEqual(test_read.sequence, self.test_kwargs["sequence"])
         self.assertEqual(test_read.header2, self.test_kwargs["header2"])
         self.assertListEqual(test_read.quality, self.test_quality)
-        self.assertEqual(
-            test_read.quality_encoding_value, self.test_kwargs["quality_encoding_value"]
-        )
+        self.assertEqual(test_read.quality_encoding_value, self.test_kwargs["quality_encoding_value"])
 
     def test_creation_bad_header(self) -> None:
         test_kwargs = self.test_kwargs.copy()
@@ -55,9 +53,7 @@ class TestFastqRead(unittest.TestCase):
 
         # bad internal base/ambiguity character
         test_kwargs = self.test_kwargs.copy()
-        test_kwargs["sequence"] = (
-            self.test_kwargs["sequence"][:1] + "W" + self.test_kwargs["sequence"][2:]
-        )
+        test_kwargs["sequence"] = self.test_kwargs["sequence"][:1] + "W" + self.test_kwargs["sequence"][2:]
         self.assertRaises(ValueError, FastqRead, **test_kwargs)
 
         # bad last base/number
@@ -74,9 +70,7 @@ class TestFastqRead(unittest.TestCase):
         # bad internal value/unicode character
         test_kwargs = self.test_kwargs.copy()
         test_kwargs["quality_string"] = (
-            self.test_kwargs["quality_string"][:1]
-            + "µ"
-            + self.test_kwargs["quality_string"][2:]
+            self.test_kwargs["quality_string"][:1] + "µ" + self.test_kwargs["quality_string"][2:]
         )
         self.assertRaises(ValueError, FastqRead, **test_kwargs)
 
@@ -117,9 +111,7 @@ class TestFastqRead(unittest.TestCase):
         test_read.trim(start=len(test_read))
         self.assertEqual(len(test_read), 1)
         self.assertEqual(len(test_read.sequence), len(test_read.quality))
-        self.assertEqual(
-            test_read.sequence, FastqRead(**self.test_kwargs).sequence[-1:]
-        )
+        self.assertEqual(test_read.sequence, FastqRead(**self.test_kwargs).sequence[-1:])
 
     def test_trim_end(self) -> None:
         test_read = FastqRead(**self.test_kwargs)
@@ -130,9 +122,7 @@ class TestFastqRead(unittest.TestCase):
         test_read.trim(end=len(test_read) - 1)
         self.assertEqual(len(test_read), len(FastqRead(**self.test_kwargs)) - 1)
         self.assertEqual(len(test_read.sequence), len(test_read.quality))
-        self.assertEqual(
-            test_read.sequence, FastqRead(**self.test_kwargs).sequence[:-1]
-        )
+        self.assertEqual(test_read.sequence, FastqRead(**self.test_kwargs).sequence[:-1])
 
         test_read = FastqRead(**self.test_kwargs)
         test_read.trim(end=1)
@@ -145,17 +135,13 @@ class TestFastqRead(unittest.TestCase):
         test_read.trim(start=2, end=2)
         self.assertEqual(len(test_read), 1)
         self.assertEqual(len(test_read.sequence), len(test_read.quality))
-        self.assertEqual(
-            test_read.sequence, FastqRead(**self.test_kwargs).sequence[1:2]
-        )
+        self.assertEqual(test_read.sequence, FastqRead(**self.test_kwargs).sequence[1:2])
 
         test_read = FastqRead(**self.test_kwargs)
         test_read.trim(start=2, end=4)
         self.assertEqual(len(test_read), 3)
         self.assertEqual(len(test_read.sequence), len(test_read.quality))
-        self.assertEqual(
-            test_read.sequence, FastqRead(**self.test_kwargs).sequence[1:4]
-        )
+        self.assertEqual(test_read.sequence, FastqRead(**self.test_kwargs).sequence[1:4])
 
     def test_trim_bad_parameters(self) -> None:
         test_read = FastqRead(**self.test_kwargs)
@@ -201,21 +187,15 @@ class TestFastqRead(unittest.TestCase):
         test_read.trim_length(start=2, length=4)
         self.assertEqual(len(test_read), 4)
         self.assertEqual(len(test_read.sequence), len(test_read.quality))
-        self.assertEqual(
-            test_read.sequence, FastqRead(**self.test_kwargs).sequence[1:5]
-        )
+        self.assertEqual(test_read.sequence, FastqRead(**self.test_kwargs).sequence[1:5])
 
     def test_trim_length_bad_parameters(self) -> None:
         test_read = FastqRead(**self.test_kwargs)
 
         # bad start parameters
-        self.assertRaises(
-            ValueError, test_read.trim_length, start=-1, length=len(test_read)
-        )
+        self.assertRaises(ValueError, test_read.trim_length, start=-1, length=len(test_read))
         self.assertEqual(test_read, FastqRead(**self.test_kwargs))
-        self.assertRaises(
-            ValueError, test_read.trim_length, start=0, length=len(test_read)
-        )
+        self.assertRaises(ValueError, test_read.trim_length, start=0, length=len(test_read))
         self.assertEqual(test_read, FastqRead(**self.test_kwargs))
         self.assertRaises(
             ValueError,
@@ -236,9 +216,7 @@ class TestFastqRead(unittest.TestCase):
         # bad parameter combinations
         self.assertRaises(ValueError, test_read.trim_length, start=-1, length=0)
         self.assertEqual(test_read, FastqRead(**self.test_kwargs))
-        self.assertRaises(
-            ValueError, test_read.trim_length, start=2, length=len(test_read)
-        )
+        self.assertRaises(ValueError, test_read.trim_length, start=2, length=len(test_read))
         self.assertEqual(test_read, FastqRead(**self.test_kwargs))
 
     def test_reverse_complement(self) -> None:
@@ -246,14 +224,10 @@ class TestFastqRead(unittest.TestCase):
         test_read.reverse_complement()
 
         self.assertEqual(test_read.header, self.test_kwargs["header"])
-        self.assertEqual(
-            test_read.sequence, reverse_complement(self.test_kwargs["sequence"])
-        )
+        self.assertEqual(test_read.sequence, reverse_complement(self.test_kwargs["sequence"]))
         self.assertEqual(test_read.header2, self.test_kwargs["header2"])
         self.assertListEqual(test_read.quality, self.test_quality[::-1])
-        self.assertEqual(
-            test_read.quality_encoding_value, self.test_kwargs["quality_encoding_value"]
-        )
+        self.assertEqual(test_read.quality_encoding_value, self.test_kwargs["quality_encoding_value"])
 
 
 if __name__ == "__main__":
