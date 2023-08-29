@@ -4,7 +4,6 @@
 
 from dataclasses import dataclass, field, InitVar
 from typing import List, Optional, ClassVar, Callable, Match
-from statistics import mean
 from fqfa.util.nucleotide import reverse_complement
 from fqfa.validator.create import create_validator
 from fqfa.constants.iupac.dna import DNA_BASES
@@ -52,9 +51,7 @@ class FastqRead:
     quality: List[int] = field(init=False)
     quality_string: InitVar[str]
     quality_encoding_value: int = 33
-    _sequence_validator: ClassVar[
-        Callable[[str], Optional[Match[str]]]
-    ] = create_validator(DNA_BASES + ["N"])
+    _sequence_validator: ClassVar[Callable[[str], Optional[Match[str]]]] = create_validator(DNA_BASES + ["N"])
 
     def __post_init__(self, quality_string: str) -> None:
         """Perform some basic checks on the input and converts the quality string into a
@@ -99,7 +96,10 @@ class FastqRead:
             # mypy false positive: https://github.com/python/mypy/issues/5485
             raise ValueError("unexpected characters in sequence")
 
-        self.quality = [ord(c) - self.quality_encoding_value for c in quality_string]
+        quality_string_bytes = quality_string.encode("ascii")
+        qev = self.quality_encoding_value
+        self.quality = [qsb - qev for qsb in quality_string_bytes]
+
         if min(self.quality) < 0:
             raise ValueError("sequence quality value below 0")
         if max(self.quality) > 93:
@@ -125,9 +125,7 @@ class FastqRead:
             Reconstruction of the original FASTQ record.
 
         """
-        quality_string = "".join(
-            [chr(q + self.quality_encoding_value) for q in self.quality]
-        )
+        quality_string = "".join([chr(q + self.quality_encoding_value) for q in self.quality])
         return "\n".join((self.header, self.sequence, self.header2, quality_string))
 
     def average_quality(self) -> float:
@@ -139,7 +137,7 @@ class FastqRead:
             Mean quality value.
 
         """
-        return mean(self.quality)
+        return sum(self.quality) / len(self.quality)
 
     def min_quality(self) -> int:
         """Calculates and returns the read's minimum quality value.

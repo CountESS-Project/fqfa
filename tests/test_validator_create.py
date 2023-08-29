@@ -64,13 +64,9 @@ class TestCreateValidator(unittest.TestCase):
 
         # invalid list arguments
         self.assertRaises(ValueError, create_validator, ["A", "C", "GT"])
-        self.assertRaises(
-            ValueError, create_validator, ["A", "C", "GT"], case_sensitive=False
-        )
+        self.assertRaises(ValueError, create_validator, ["A", "C", "GT"], case_sensitive=False)
         self.assertRaises(ValueError, create_validator, ["A", "C", ""])
-        self.assertRaises(
-            ValueError, create_validator, ["A", "C", ""], case_sensitive=False
-        )
+        self.assertRaises(ValueError, create_validator, ["A", "C", ""], case_sensitive=False)
 
 
 if __name__ == "__main__":

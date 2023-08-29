@@ -9,9 +9,7 @@ from fqfa.validator.validator import dna_bases_validator, amino_acids_validator
 __all__ = ["translate_dna", "ncbi_genetic_code_to_dict"]
 
 
-def translate_dna(
-    seq: str, table: Optional[Dict[str, str]] = None, frame: int = 0
-) -> Tuple[str, Optional[str]]:
+def translate_dna(seq: str, table: Optional[Dict[str, str]] = None, frame: int = 0) -> Tuple[str, Optional[str]]:
     """
     Translate a DNA sequence into the corresponding amino acid sequence.
 
@@ -116,11 +114,7 @@ def ncbi_genetic_code_to_dict(  # noqa: max-complexity: 11
         If the AAs row contains a character other than an amino acid.
 
     """
-    lines = [
-        s.strip()
-        for s in ncbi_string.split("\n")
-        if len(s) > 0 and not s.startswith("#") and not s.isspace()
-    ]
+    lines = [s.strip() for s in ncbi_string.split("\n") if len(s) > 0 and not s.startswith("#") and not s.isspace()]
     if len(lines) != 5:
         raise ValueError("transl_table string must have 5 lines")
 
@@ -152,12 +146,7 @@ def ncbi_genetic_code_to_dict(  # noqa: max-complexity: 11
     codon_dict: Dict[str, str] = dict()
     for aa, codon in zip(
         transl_table["AAs"],
-        (
-            "".join(nts)
-            for nts in zip(
-                transl_table["Base1"], transl_table["Base2"], transl_table["Base3"]
-            )
-        ),
+        ("".join(nts) for nts in zip(transl_table["Base1"], transl_table["Base2"], transl_table["Base3"])),
     ):
         if codon not in codon_dict:
             codon_dict[codon] = aa

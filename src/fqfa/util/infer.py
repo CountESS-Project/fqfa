@@ -59,9 +59,7 @@ def infer_sequence_type(seq: str, report_iupac: bool = True) -> Optional[str]:
         return None
 
 
-def infer_all_sequence_types(  # noqa: max-complexity: 11
-    seq: str, report_iupac: bool = True
-) -> Optional[List[str]]:
+def infer_all_sequence_types(seq: str, report_iupac: bool = True) -> Optional[List[str]]:  # noqa: max-complexity: 11
     """Return all inferred types for the given sequence.
 
     Sequence types include:

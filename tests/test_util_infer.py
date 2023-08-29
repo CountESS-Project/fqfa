@@ -21,9 +21,7 @@ class TestInferSequenceType(unittest.TestCase):
         self.assertEqual(infer_sequence_type("MDLSALRVEE"), "protein")
 
     def test_protein_iupac(self):
-        self.assertEqual(
-            infer_sequence_type("LIVWZ", report_iupac=True), "protein-iupac"
-        )
+        self.assertEqual(infer_sequence_type("LIVWZ", report_iupac=True), "protein-iupac")
         self.assertEqual(infer_sequence_type("LIVWZ", report_iupac=False), "protein")
 
     def test_lowercase(self):
@@ -50,25 +48,19 @@ class TestInferAllSequenceTypes(unittest.TestCase):
             infer_all_sequence_types("ACGT", report_iupac=True),
             ["dna", "dna-iupac", "protein", "protein-iupac"],
         )
-        self.assertListEqual(
-            infer_all_sequence_types("ACGT", report_iupac=False), ["dna", "protein"]
-        )
+        self.assertListEqual(infer_all_sequence_types("ACGT", report_iupac=False), ["dna", "protein"])
         self.assertListEqual(
             infer_all_sequence_types("TTTTT", report_iupac=True),
             ["dna", "dna-iupac", "protein", "protein-iupac"],
         )
-        self.assertListEqual(
-            infer_all_sequence_types("TTTTT", report_iupac=False), ["dna", "protein"]
-        )
+        self.assertListEqual(infer_all_sequence_types("TTTTT", report_iupac=False), ["dna", "protein"])
 
     def test_dna_iupac(self):
         self.assertListEqual(
             infer_all_sequence_types("AWGT", report_iupac=True),
             ["dna-iupac", "protein", "protein-iupac"],
         )
-        self.assertListEqual(
-            infer_all_sequence_types("AWGT", report_iupac=False), ["dna", "protein"]
-        )
+        self.assertListEqual(infer_all_sequence_types("AWGT", report_iupac=False), ["dna", "protein"])
 
     def test_rna(self):
         self.assertListEqual(infer_all_sequence_types("ACGU"), ["rna"])
@@ -79,17 +71,11 @@ class TestInferAllSequenceTypes(unittest.TestCase):
             infer_all_sequence_types("LIVW", report_iupac=True),
             ["protein", "protein-iupac"],
         )
-        self.assertListEqual(
-            infer_all_sequence_types("MDLSALRVEE", report_iupac=False), ["protein"]
-        )
+        self.assertListEqual(infer_all_sequence_types("MDLSALRVEE", report_iupac=False), ["protein"])
 
     def test_protein_iupac(self):
-        self.assertListEqual(
-            infer_all_sequence_types("LIVWZ", report_iupac=True), ["protein-iupac"]
-        )
-        self.assertListEqual(
-            infer_all_sequence_types("LIVWZ", report_iupac=False), ["protein"]
-        )
+        self.assertListEqual(infer_all_sequence_types("LIVWZ", report_iupac=True), ["protein-iupac"])
+        self.assertListEqual(infer_all_sequence_types("LIVWZ", report_iupac=False), ["protein"])
 
     def test_lowercase(self):
         self.assertIsNone(infer_all_sequence_types("acgt"))
