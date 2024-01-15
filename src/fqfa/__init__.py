@@ -9,7 +9,7 @@ from fqfa.util.nucleotide import (
 )
 from fqfa.util.translate import translate_dna, ncbi_genetic_code_to_dict
 
-__version__ = "1.3.0"
+__version__ = "1.3.1"
 
 __all__ = [
     "__version__",
