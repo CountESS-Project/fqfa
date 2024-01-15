@@ -58,3 +58,5 @@ exclude = [
     ".github/",
     "paper.*",
 ]
+[tool.setuptools.package-data]
+"fqfa" = ["py.typed"]
